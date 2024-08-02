@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para mostrar o aviso principal
     function showAvisoPrincipal() {
         const avisoPrincipal = document.getElementById('aviso-principal');
-        avisoPrincipal.style.opacity = 1;
+        avisoPrincipal.classList.add('active');
         setTimeout(() => {
-            avisoPrincipal.style.opacity = 0;
+            avisoPrincipal.classList.remove('active');
             setTimeout(() => {
                 avisoPrincipal.style.display = 'none';
                 showAvisoSecundario();
@@ -28,16 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     avisoSecundarioContent.style.opacity = 0;
                     setTimeout(() => {
                         avisoSecundarioContent.style.display = 'none';
-                        loadMainContent();
+                        showLoadingScreen();
                     }, 2000); // Tempo para desaparecer (2 segundos)
                 }, 5000); // Tempo para exibir (5 segundos)
             })
             .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
     }
 
+    // Função para mostrar a tela de carregamento
+    function showLoadingScreen() {
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.display = 'flex'; // Mostrar a tela de carregamento
+        setTimeout(() => {
+            loadMainContent(); // Carregar o conteúdo principal após um tempo de exibição
+        }, 3000); // Tempo de exibição da tela de carregamento (3 segundos)
+    }
+
     // Função para ocultar a tela de carregamento e mostrar o conteúdo principal
     function hideLoadingScreen() {
-        document.getElementById('loading-screen').style.display = 'none';
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.display = 'none';
     }
 
     // Função para carregar o conteúdo principal
@@ -53,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicialização
     function initialize() {
-        const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.style.display = 'flex'; // Mostrar a tela de carregamento
         showAvisoPrincipal(); // Mostrar o aviso principal
     }
 
