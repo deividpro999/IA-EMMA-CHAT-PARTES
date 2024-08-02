@@ -17,3 +17,10 @@ function navigateTo(option) {
             break;
     }
 }
+
+window.onload = function() {
+    setTimeout(function() {
+        document.getElementById('loading-screen').style.display = 'none';
+        document.getElementById('menu').style.display = 'flex';
+    }, 3000); // 3000 milissegundos = 3 segundos
+};
