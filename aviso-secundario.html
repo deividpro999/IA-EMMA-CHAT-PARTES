@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Secundário</title>
+    <style>
+        /* Estilos para o aviso secundário */
+        #aviso-secundario-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 3s ease-in-out; /* Transição lenta para desaparecer */
+        }
+
+        #aviso-secundario-content img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: cover; /* Faz a imagem cobrir a tela sem distorcer */
+        }
+    </style>
+</head>
+<body>
+    <div id="aviso-secundario-content">
+        <img src="https://raw.githubusercontent.com/deividpro999/IA-EMMA-CHAT-PARTES/2f2a285e96f56d96cde02e57f1d03ddea8575400/AVISO%20LEIA%20ANTES%20DE%20COME%C3%87AR.png" alt="Imagem do Aviso Secundário">
+    </div>
+</body>
+</html>

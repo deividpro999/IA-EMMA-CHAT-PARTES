@@ -1,0 +1,41 @@
+/* Estilos para o aviso principal */
+#aviso-principal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    font-size: 3em;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Estilos para a tela de carregamento */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Estilos para o conteúdo principal */
+#main-content {
+    padding: 20px;
+    background: #f4f4f4;
+}
