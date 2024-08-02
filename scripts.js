@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             avisoSecundario.style.display = 'none';
                             showLoadingScreen();
-                        }, 1000); // Tempo para desaparecer
-                    }, 3000); // Tempo visível
+                        }, 2000); // Tempo para desaparecer
+                    }, 5000); // Tempo visível
                 }, 0);
-            }, 1000); // Atraso para leitura
+            }, 2000); // Atraso para leitura
         }
     }
 
