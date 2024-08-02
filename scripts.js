@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 document.getElementById('main-content').innerHTML = data;
                 hideLoadingScreen();
-                showMenu(); // Mostrar o menu após o conteúdo principal
+                showMenu();
             })
             .catch(error => console.error('Erro ao carregar o conteúdo:', error));
     }
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.text())
             .then(data => {
                 document.getElementById('main-content').innerHTML += data;
+                document.getElementById('menu').style.display = 'block'; // Mostrar o menu
             })
             .catch(error => console.error('Erro ao carregar o menu:', error));
     }
