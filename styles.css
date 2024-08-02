@@ -34,10 +34,13 @@ body {
 }
 
 @keyframes aura {
-    0%, 100% {
-        box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0.8);
+    0% {
+        box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0);
     }
     50% {
+        box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
         box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0);
     }
 }
@@ -51,6 +54,8 @@ body {
     background: rgba(255, 255, 255, 0.8);
     display: none;
     z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 #aviso-secundario {
