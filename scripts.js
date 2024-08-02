@@ -1,18 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Função para mostrar o aviso principal
     function showAvisoPrincipal() {
         const avisoPrincipal = document.getElementById('aviso-principal');
-        avisoPrincipal.classList.add('active');
+        avisoPrincipal.style.opacity = 1;
         setTimeout(() => {
-            avisoPrincipal.classList.remove('active');
+            avisoPrincipal.style.opacity = 0;
             setTimeout(() => {
                 avisoPrincipal.style.display = 'none';
                 showAvisoSecundario();
-            }, 2000); // Tempo para desaparecer
-        }, 5000); // Tempo para exibir
+            }, 1000);
+        }, 3000);
     }
 
-    // Função para mostrar o aviso secundário
     function showAvisoSecundario() {
         const avisoSecundario = document.getElementById('aviso-secundario');
         fetch('aviso-secundario.html')
@@ -23,48 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 avisoSecundarioContent.style.display = 'block';
                 setTimeout(() => {
                     avisoSecundarioContent.style.opacity = 1;
-                }, 0); // Garante que a transição começa imediatamente
+                }, 0);
                 setTimeout(() => {
                     avisoSecundarioContent.style.opacity = 0;
                     setTimeout(() => {
                         avisoSecundarioContent.style.display = 'none';
-                        showLoadingScreen();
-                    }, 2000); // Tempo para desaparecer (2 segundos)
-                }, 5000); // Tempo para exibir (5 segundos)
+                        loadMainContent();
+                    }, 1000);
+                }, 3000);
             })
             .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
     }
 
-    // Função para mostrar a tela de carregamento
-    function showLoadingScreen() {
-        const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.style.display = 'flex'; // Mostrar a tela de carregamento
-        setTimeout(() => {
-            loadMainContent(); // Carregar o conteúdo principal após um tempo de exibição
-        }, 3000); // Tempo de exibição da tela de carregamento (3 segundos)
-    }
-
-    // Função para ocultar a tela de carregamento e mostrar o conteúdo principal
-    function hideLoadingScreen() {
-        const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.style.display = 'none';
-    }
-
-    // Função para carregar o conteúdo principal
     function loadMainContent() {
-        fetch('content.html')
+        fetch('index.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('main-content').innerHTML = data;
-                hideLoadingScreen(); // Ocultar a tela de carregamento
+                hideLoadingScreen();
+                showMenu(); // Mostrar o menu após o conteúdo principal
             })
             .catch(error => console.error('Erro ao carregar o conteúdo:', error));
     }
 
-    // Inicialização
-    function initialize() {
-        showAvisoPrincipal(); // Mostrar o aviso principal
+    function hideLoadingScreen() {
+        document.getElementById('loading-screen').style.display = 'none';
     }
 
-    initialize(); // Iniciar a carga
+    function showMenu() {
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main-content').innerHTML += data;
+            })
+            .catch(error => console.error('Erro ao carregar o menu:', error));
+    }
+
+    showAvisoPrincipal();
 });
