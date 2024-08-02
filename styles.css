@@ -1,84 +1,42 @@
-/* Estilos para os avisos */
-#aviso-principal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    color: #fff;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    font-size: 3em;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+}
+
+#aviso-principal, #aviso-secundario, #loading-screen {
+    display: none;
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
-#aviso-secundario {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+#aviso-principal, #aviso-secundario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 2em;
-    display: none;
+    text-align: center;
 }
 
 #loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 2em;
-    transition: opacity 1s ease-in-out;
+    text-align: center;
 }
 
 #main-content {
-    padding: 20px;
-    background: #f4f4f4;
-}
-
-#menu {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #333;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1001;
-    display: none; /* Inicialmente oculto */
-}
-
-#menu button {
-    display: block;
-    background: transparent;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    font-size: 1em;
-    cursor: pointer;
-    text-align: left;
+    display: none;
     width: 100%;
-    margin: 5px 0;
-    transition: background 0.3s ease;
-}
-
-#menu button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    height: 100%;
 }
