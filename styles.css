@@ -30,18 +30,15 @@ body {
 }
 
 #aviso-principal.aura {
-    animation: aura 3s ease-in-out; /* Adiciona a aura branca */
+    animation: aura 4s ease-in-out; /* Adiciona a aura branca */
 }
 
 @keyframes aura {
-    0% {
+    0%, 100% {
         box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0);
     }
     50% {
         box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0);
     }
 }
 
@@ -55,7 +52,7 @@ body {
     display: none;
     z-index: 1;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 2s ease-in-out;
 }
 
 #aviso-secundario {
