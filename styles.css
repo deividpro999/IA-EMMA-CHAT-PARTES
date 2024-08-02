@@ -17,13 +17,25 @@ body {
     transition: opacity 1s ease-in-out;
 }
 
-#aviso-principal, #aviso-secundario {
+#aviso-principal {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2em;
     text-align: center;
+    font-weight: bold; /* Adiciona negrito */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Adiciona aura branca */
+}
+
+#aviso-secundario {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://raw.githubusercontent.com/deividpro999/IA-EMMA-CHAT-PARTES/2f2a285e96f56d96cde02e57f1d03ddea8575400/AVISO%20LEIA%20ANTES%20DE%20COME%C3%87AR.png') no-repeat center center;
+    background-size: cover;
 }
 
 #loading-screen {
@@ -39,4 +51,27 @@ body {
     display: none;
     width: 100%;
     height: 100%;
+}
+
+#menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#menu button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+#menu button:hover {
+    text-decoration: underline;
 }
