@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showAvisoPrincipal() {
         const avisoPrincipal = document.getElementById('aviso-principal');
         if (avisoPrincipal) {
+            avisoPrincipal.style.display = 'block';
             avisoPrincipal.style.opacity = 1;
             setTimeout(() => {
                 avisoPrincipal.style.opacity = 0;
@@ -20,22 +21,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => response.text())
                 .then(data => {
                     avisoSecundario.innerHTML = data;
-                    const avisoSecundarioContent = document.getElementById('aviso-secundario-content');
-                    if (avisoSecundarioContent) {
-                        avisoSecundarioContent.style.display = 'block';
+                    avisoSecundario.style.display = 'block';
+                    setTimeout(() => {
+                        avisoSecundario.style.opacity = 1;
+                    }, 0);
+                    setTimeout(() => {
+                        avisoSecundario.style.opacity = 0;
                         setTimeout(() => {
-                            avisoSecundarioContent.style.opacity = 1;
-                        }, 0);
-                        setTimeout(() => {
-                            avisoSecundarioContent.style.opacity = 0;
-                            setTimeout(() => {
-                                avisoSecundarioContent.style.display = 'none';
-                                loadMainContent();
-                            }, 1000); // Tempo para desaparecer
-                        }, 3000); // Tempo para aparecer
-                    }
+                            avisoSecundario.style.display = 'none';
+                            showLoadingScreen();
+                        }, 1000); // Tempo para desaparecer
+                    }, 3000); // Tempo para aparecer
                 })
                 .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
+        }
+    }
+
+    function showLoadingScreen() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingScreen.style.display = 'block';
+            loadingScreen.style.opacity = 1;
+            setTimeout(() => {
+                loadingScreen.style.opacity = 0;
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    loadMainContent();
+                }, 1000); // Tempo para desaparecer
+            }, 2000); // Tempo para aparecer
         }
     }
 
@@ -43,21 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('index.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('main-content').innerHTML = data;
-                hideLoadingScreen();
-                showMenu();
+                const mainContent = document.getElementById('main-content');
+                if (mainContent) {
+                    mainContent.innerHTML = data;
+                    mainContent.style.display = 'block';
+                    showMenu();
+                }
             })
             .catch(error => console.error('Erro ao carregar o conteúdo:', error));
-    }
-
-    function hideLoadingScreen() {
-        const loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen) {
-            loadingScreen.style.opacity = 0;
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 1000); // Tempo para desaparecer
-        }
     }
 
     function showMenu() {
@@ -70,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const menu = document.getElementById('menu');
                     if (menu) {
                         menu.style.display = 'block';
-
-                        // Adiciona o ouvinte de eventos após o menu ser carregado
                         menu.addEventListener('click', function(event) {
                             const target = event.target;
                             if (target.tagName === 'BUTTON') {
