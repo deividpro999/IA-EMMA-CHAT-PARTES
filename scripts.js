@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicialização
     function initialize() {
-        document.getElementById('loading-screen').style.display = 'block';
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.display = 'flex'; // Mostrar a tela de carregamento
         showAvisoPrincipal(); // Mostrar o aviso principal
     }
 
