@@ -1,36 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
     function showAvisoPrincipal() {
         const avisoPrincipal = document.getElementById('aviso-principal');
-        avisoPrincipal.style.opacity = 1;
-        setTimeout(() => {
-            avisoPrincipal.style.opacity = 0;
+        if (avisoPrincipal) {
+            avisoPrincipal.style.opacity = 1;
             setTimeout(() => {
-                avisoPrincipal.style.display = 'none';
-                showAvisoSecundario();
-            }, 1000); // Tempo para desaparecer
-        }, 3000); // Tempo para aparecer
+                avisoPrincipal.style.opacity = 0;
+                setTimeout(() => {
+                    avisoPrincipal.style.display = 'none';
+                    showAvisoSecundario();
+                }, 1000); // Tempo para desaparecer
+            }, 3000); // Tempo para aparecer
+        }
     }
 
     function showAvisoSecundario() {
         const avisoSecundario = document.getElementById('aviso-secundario');
-        fetch('aviso-secundario.html')
-            .then(response => response.text())
-            .then(data => {
-                avisoSecundario.innerHTML = data;
-                const avisoSecundarioContent = document.getElementById('aviso-secundario-content');
-                avisoSecundarioContent.style.display = 'block';
-                setTimeout(() => {
-                    avisoSecundarioContent.style.opacity = 1;
-                }, 0);
-                setTimeout(() => {
-                    avisoSecundarioContent.style.opacity = 0;
-                    setTimeout(() => {
-                        avisoSecundarioContent.style.display = 'none';
-                        loadMainContent();
-                    }, 1000); // Tempo para desaparecer
-                }, 3000); // Tempo para aparecer
-            })
-            .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
+        if (avisoSecundario) {
+            fetch('aviso-secundario.html')
+                .then(response => response.text())
+                .then(data => {
+                    avisoSecundario.innerHTML = data;
+                    const avisoSecundarioContent = document.getElementById('aviso-secundario-content');
+                    if (avisoSecundarioContent) {
+                        avisoSecundarioContent.style.display = 'block';
+                        setTimeout(() => {
+                            avisoSecundarioContent.style.opacity = 1;
+                        }, 0);
+                        setTimeout(() => {
+                            avisoSecundarioContent.style.opacity = 0;
+                            setTimeout(() => {
+                                avisoSecundarioContent.style.display = 'none';
+                                loadMainContent();
+                            }, 1000); // Tempo para desaparecer
+                        }, 3000); // Tempo para aparecer
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
+        }
     }
 
     function loadMainContent() {
@@ -45,28 +51,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hideLoadingScreen() {
-        document.getElementById('loading-screen').style.opacity = 0;
-        setTimeout(() => {
-            document.getElementById('loading-screen').style.display = 'none';
-        }, 1000); // Tempo para desaparecer
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingScreen.style.opacity = 0;
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 1000); // Tempo para desaparecer
+        }
     }
 
     function showMenu() {
         fetch('menu.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('main-content').innerHTML += data;
-                const menu = document.getElementById('menu');
-                menu.style.display = 'block';
+                const mainContent = document.getElementById('main-content');
+                if (mainContent) {
+                    mainContent.innerHTML += data;
+                    const menu = document.getElementById('menu');
+                    if (menu) {
+                        menu.style.display = 'block';
 
-                // Adiciona o ouvinte de eventos após o menu ser carregado
-                menu.addEventListener('click', function(event) {
-                    const target = event.target;
-                    if (target.tagName === 'BUTTON') {
-                        const option = target.dataset.option;
-                        navigateTo(option);
+                        // Adiciona o ouvinte de eventos após o menu ser carregado
+                        menu.addEventListener('click', function(event) {
+                            const target = event.target;
+                            if (target.tagName === 'BUTTON') {
+                                const option = target.dataset.option;
+                                navigateTo(option);
+                            }
+                        });
                     }
-                });
+                }
             })
             .catch(error => console.error('Erro ao carregar o menu:', error));
     }
