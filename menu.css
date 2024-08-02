@@ -1,61 +1,28 @@
-/* Estilos gerais do menu */
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #222;
-    font-family: Arial, sans-serif;
-}
-
-.loading-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #000;
+#menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #333;
     color: #fff;
-    font-size: 2em;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1001;
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
-    padding: 20px;
-}
-
-.menu button {
-    text-decoration: none;
-    background-color: transparent;
-    color: white;
-    padding: 15px 30px;
-    margin: 10px 0;
-    font-size: 1.5em;
+#menu button {
+    display: block;
+    background: transparent;
+    color: #fff;
     border: none;
+    padding: 10px;
+    font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: left;
+    width: 100%;
+    margin: 5px 0;
+    transition: background 0.3s ease;
 }
 
-.menu button:hover {
-    background-color: #555;
-}
-
-#exit {
-    color: red;
-}
-
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #fff;
-    color: #000;
-    font-size: 1.5em;
+#menu button:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
