@@ -56,7 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.text())
             .then(data => {
                 document.getElementById('main-content').innerHTML += data;
-                document.getElementById('menu').style.display = 'block';
+                const menu = document.getElementById('menu');
+                menu.style.display = 'block';
+
+                // Adiciona o ouvinte de eventos após o menu ser carregado
+                menu.addEventListener('click', function(event) {
+                    const target = event.target;
+                    if (target.tagName === 'BUTTON') {
+                        const option = target.dataset.option;
+                        navigateTo(option);
+                    }
+                });
             })
             .catch(error => console.error('Erro ao carregar o menu:', error));
     }
@@ -80,14 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
     }
-
-    document.getElementById('menu').addEventListener('click', function(event) {
-        const target = event.target;
-        if (target.tagName === 'BUTTON') {
-            const option = target.dataset.option;
-            navigateTo(option);
-        }
-    });
 
     showAvisoPrincipal();
 });
