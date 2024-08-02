@@ -3,31 +3,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const avisoPrincipal = document.getElementById('aviso-principal');
         if (avisoPrincipal) {
             avisoPrincipal.style.display = 'block';
-            avisoPrincipal.style.opacity = 1;
             setTimeout(() => {
-                avisoPrincipal.style.opacity = 0;
+                avisoPrincipal.style.opacity = 1;
                 setTimeout(() => {
-                    avisoPrincipal.style.display = 'none';
-                    showAvisoSecundario();
-                }, 1000); // Tempo para desaparecer
-            }, 3000); // Tempo para aparecer
+                    avisoPrincipal.style.opacity = 0;
+                    setTimeout(() => {
+                        avisoPrincipal.style.display = 'none';
+                        showAvisoSecundario();
+                    }, 1000); // Tempo para desaparecer
+                }, 3000); // Tempo visível
+            }, 0);
         }
     }
 
     function showAvisoSecundario() {
         const avisoSecundario = document.getElementById('aviso-secundario');
         if (avisoSecundario) {
-            avisoSecundario.style.display = 'block';
             setTimeout(() => {
-                avisoSecundario.style.opacity = 1;
-            }, 0);
-            setTimeout(() => {
-                avisoSecundario.style.opacity = 0;
+                avisoSecundario.style.display = 'block';
                 setTimeout(() => {
-                    avisoSecundario.style.display = 'none';
-                    showLoadingScreen();
-                }, 1000); // Tempo para desaparecer
-            }, 3000); // Tempo para aparecer
+                    avisoSecundario.style.opacity = 1;
+                    setTimeout(() => {
+                        avisoSecundario.style.opacity = 0;
+                        setTimeout(() => {
+                            avisoSecundario.style.display = 'none';
+                            showLoadingScreen();
+                        }, 1000); // Tempo para desaparecer
+                    }, 3000); // Tempo visível
+                }, 0);
+            }, 1000); // Atraso para leitura
         }
     }
 
@@ -35,14 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingScreen = document.getElementById('loading-screen');
         if (loadingScreen) {
             loadingScreen.style.display = 'block';
-            loadingScreen.style.opacity = 1;
             setTimeout(() => {
-                loadingScreen.style.opacity = 0;
+                loadingScreen.style.opacity = 1;
                 setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    loadMainContent();
-                }, 1000); // Tempo para desaparecer
-            }, 2000); // Tempo para aparecer
+                    loadingScreen.style.opacity = 0;
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        loadMainContent();
+                    }, 500); // Tempo para desaparecer
+                }, 2000); // Tempo para aparecer
+            }, 0);
         }
     }
 
