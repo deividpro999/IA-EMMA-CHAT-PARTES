@@ -24,8 +24,17 @@ body {
     transform: translate(-50%, -50%);
     font-size: 2em;
     text-align: center;
-    font-weight: bold; /* Adiciona negrito */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Adiciona aura branca */
+    font-weight: bold; /* Negrito */
+    animation: aura 3s ease-in-out; /* Adiciona a aura branca */
+}
+
+@keyframes aura {
+    0%, 100% {
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
 }
 
 #aviso-secundario {
@@ -45,6 +54,13 @@ body {
     transform: translate(-50%, -50%);
     font-size: 2em;
     text-align: center;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }
 
 #main-content {
