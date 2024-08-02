@@ -1,21 +1,33 @@
 function navigateTo(option) {
+    let contentDiv = document.getElementById('content');
     switch (option) {
         case 'option1':
-            window.location.href = 'chat.html'; // Redireciona para o conteúdo principal
+            loadContent('chat.html');
             break;
         case 'option2':
-            window.location.href = 'carregar.html'; // Redireciona para carregar chat
+            loadContent('carregar.html');
             break;
         case 'option3':
-            window.location.href = 'auto.html'; // Redireciona para modo auto
+            loadContent('auto.html');
             break;
         case 'option4':
-            window.location.href = 'opcoes.html'; // Redireciona para opções
+            loadContent('opcoes.html');
             break;
         case 'option5':
             window.close(); // Fechar tudo
             break;
     }
+}
+
+function loadContent(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('content').innerHTML = data;
+            document.getElementById('content').style.display = 'flex';
+        })
+        .catch(error => console.error('Erro ao carregar conteúdo:', error));
 }
 
 window.onload = function() {
