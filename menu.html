@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estrutura Básica do Menu</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="loading-screen" class="loading-screen">
-        <h1>Carregando...</h1>
-    </div>
-    <div id="menu" class="menu" style="display: none;">
-        <button id="newChat" onclick="navigateTo('option1')">Novo chat</button>
-        <button id="loadChat" onclick="navigateTo('option2')">Carregar chat</button>
-        <button id="autoMode" onclick="navigateTo('option3')">Modo auto</button>
-        <button id="options" onclick="navigateTo('option4')">Opções</button>
-        <button id="exit" onclick="navigateTo('option5')">Sair</button>
-    </div>
-    <div id="content" class="content" style="display: none;"></div>
-    <script src="scripts.js"></script>
-</body>
-</html>
+<div id="menu">
+    <button onclick="navigateTo('option1')">Novo chat</button>
+    <button onclick="navigateTo('option2')">Carregar chat</button>
+    <button onclick="navigateTo('option3')">Modo auto</button>
+    <button onclick="navigateTo('option4')">Opções</button>
+    <button id="exit">Sair</button>
+</div>
