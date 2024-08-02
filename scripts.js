@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 avisoPrincipal.style.display = 'none';
                 showAvisoSecundario();
-            }, 1000);
-        }, 3000);
+            }, 1000); // Tempo para desaparecer
+        }, 3000); // Tempo para aparecer
     }
 
     function showAvisoSecundario() {
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         avisoSecundarioContent.style.display = 'none';
                         loadMainContent();
-                    }, 1000);
-                }, 3000);
+                    }, 1000); // Tempo para desaparecer
+                }, 3000); // Tempo para aparecer
             })
             .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
     }
@@ -45,7 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hideLoadingScreen() {
-        document.getElementById('loading-screen').style.display = 'none';
+        document.getElementById('loading-screen').style.opacity = 0;
+        setTimeout(() => {
+            document.getElementById('loading-screen').style.display = 'none';
+        }, 1000); // Tempo para desaparecer
     }
 
     function showMenu() {
@@ -53,10 +56,38 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.text())
             .then(data => {
                 document.getElementById('main-content').innerHTML += data;
-                document.getElementById('menu').style.display = 'block'; // Mostrar o menu
+                document.getElementById('menu').style.display = 'block';
             })
             .catch(error => console.error('Erro ao carregar o menu:', error));
     }
+
+    function navigateTo(option) {
+        switch (option) {
+            case 'novo-chat':
+                window.location.href = 'index.html'; // Redireciona para o conteúdo principal
+                break;
+            case 'carregar-chat':
+                window.location.href = 'carregar-chat.html'; // Redireciona para carregar chat
+                break;
+            case 'modo-auto':
+                window.location.href = 'modo-auto.html'; // Redireciona para modo auto
+                break;
+            case 'opcoes':
+                window.location.href = 'opcoes.html'; // Redireciona para opções
+                break;
+            case 'sair':
+                window.close(); // Fecha a janela
+                break;
+        }
+    }
+
+    document.getElementById('menu').addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.tagName === 'BUTTON') {
+            const option = target.dataset.option;
+            navigateTo(option);
+        }
+    });
 
     showAvisoPrincipal();
 });
