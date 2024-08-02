@@ -17,23 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function showAvisoSecundario() {
         const avisoSecundario = document.getElementById('aviso-secundario');
         if (avisoSecundario) {
-            fetch('aviso-secundario.html')
-                .then(response => response.text())
-                .then(data => {
-                    avisoSecundario.innerHTML = data;
-                    avisoSecundario.style.display = 'block';
-                    setTimeout(() => {
-                        avisoSecundario.style.opacity = 1;
-                    }, 0);
-                    setTimeout(() => {
-                        avisoSecundario.style.opacity = 0;
-                        setTimeout(() => {
-                            avisoSecundario.style.display = 'none';
-                            showLoadingScreen();
-                        }, 1000); // Tempo para desaparecer
-                    }, 3000); // Tempo para aparecer
-                })
-                .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
+            avisoSecundario.style.display = 'block';
+            setTimeout(() => {
+                avisoSecundario.style.opacity = 1;
+            }, 0);
+            setTimeout(() => {
+                avisoSecundario.style.opacity = 0;
+                setTimeout(() => {
+                    avisoSecundario.style.display = 'none';
+                    showLoadingScreen();
+                }, 1000); // Tempo para desaparecer
+            }, 3000); // Tempo para aparecer
         }
     }
 
