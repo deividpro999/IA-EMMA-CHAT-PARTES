@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 avisoPrincipal.style.display = 'none';
                 showAvisoSecundario();
-            }, 1000); // Tempo para desaparecer
-        }, 3000); // Tempo para exibir
+            }, 2000); // Tempo para desaparecer
+        }, 5000); // Tempo para exibir
     }
 
     // Função para mostrar o aviso secundário
@@ -20,17 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 avisoSecundario.innerHTML = data;
                 const avisoSecundarioContent = document.getElementById('aviso-secundario-content');
-                avisoSecundarioContent.style.display = 'flex'; // Mostrar o aviso secundário
+                avisoSecundarioContent.style.display = 'block';
                 setTimeout(() => {
-                    avisoSecundarioContent.style.opacity = 1; // Iniciar a transição de opacidade
+                    avisoSecundarioContent.style.opacity = 1;
                 }, 0); // Garante que a transição começa imediatamente
                 setTimeout(() => {
-                    avisoSecundarioContent.style.opacity = 0; // Iniciar a transição para desaparecer
+                    avisoSecundarioContent.style.opacity = 0;
                     setTimeout(() => {
                         avisoSecundarioContent.style.display = 'none';
                         loadMainContent();
-                    }, 3000); // Tempo para desaparecer
-                }, 5000); // Tempo para exibir
+                    }, 2000); // Tempo para desaparecer (2 segundos)
+                }, 5000); // Tempo para exibir (5 segundos)
             })
             .catch(error => console.error('Erro ao carregar o aviso secundário:', error));
     }
