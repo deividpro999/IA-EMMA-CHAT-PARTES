@@ -13,7 +13,13 @@
     z-index: 1000;
     font-size: 3em;
     opacity: 0;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 2s ease-in-out, box-shadow 2s ease-in-out;
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0);
+}
+
+#aviso-principal.active {
+    opacity: 1;
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.6);
 }
 
 /* Estilos para o aviso secundário */
