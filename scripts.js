@@ -1,17 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     function showAvisoPrincipal() {
         const avisoPrincipal = document.getElementById('aviso-principal');
+        const auraBackground = document.getElementById('aura-background');
+        
         if (avisoPrincipal) {
+            auraBackground.style.display = 'block';
             avisoPrincipal.style.display = 'block';
             setTimeout(() => {
+                auraBackground.style.opacity = 1;
+                avisoPrincipal.classList.add('aura');
                 avisoPrincipal.style.opacity = 1;
                 setTimeout(() => {
-                    avisoPrincipal.style.opacity = 0;
+                    auraBackground.style.opacity = 0;
+                    avisoPrincipal.classList.remove('aura');
                     setTimeout(() => {
-                        avisoPrincipal.style.display = 'none';
-                        showAvisoSecundario();
-                    }, 1000); // Tempo para desaparecer
-                }, 3000); // Tempo visível
+                        avisoPrincipal.style.opacity = 1;
+                        setTimeout(() => {
+                            avisoPrincipal.style.opacity = 0;
+                            auraBackground.style.opacity = 1;
+                            avisoPrincipal.classList.add('aura');
+                            setTimeout(() => {
+                                avisoPrincipal.style.display = 'none';
+                                auraBackground.style.opacity = 0;
+                                setTimeout(() => {
+                                    auraBackground.style.display = 'none';
+                                    showAvisoSecundario();
+                                }, 1000); // Tempo para desaparecer
+                            }, 1000); // Tempo para a aura desaparecer
+                        }, 3000); // Tempo visível
+                    }, 1000); // Tempo para a aura desaparecer
+                }, 1000); // Tempo para a aura desaparecer
             }, 0);
         }
     }
