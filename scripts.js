@@ -52,11 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     loadingScreen.style.opacity = 0;
                     setTimeout(() => {
                         loadingScreen.style.display = 'none';
-                        showMenu();
+                        loadMainContent();
                     }, 500);
                 }, 2000);
             }, 0);
         }
+    }
+
+    function loadMainContent() {
+        fetch('content.html')
+            .then(response => response.text())
+            .then(data => {
+                const mainContent = document.getElementById('main-content');
+                if (mainContent) {
+                    mainContent.innerHTML = data;
+                    mainContent.style.display = 'block';
+                    showMenu();
+                }
+            })
+            .catch(error => console.error('Erro ao carregar o conteúdo:', error));
     }
 
     function showMenu() {
@@ -65,11 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 const mainContent = document.getElementById('main-content');
                 if (mainContent) {
-                    mainContent.innerHTML = data;
-                    mainContent.style.display = 'block';
+                    mainContent.innerHTML += data;
                     const menu = document.getElementById('menu');
                     if (menu) {
-                        menu.style.display = 'flex';
+                        menu.style.display = 'block';
                         menu.addEventListener('click', function(event) {
                             const target = event.target;
                             if (target.tagName === 'BUTTON') {
@@ -86,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function navigateTo(option) {
         switch (option) {
             case 'novo-chat':
-                loadMainContent();
+                window.location.href = 'index.html';
                 break;
             case 'carregar-chat':
                 window.location.href = 'carregar-chat.html';
@@ -95,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'modo-auto.html';
                 break;
             case 'opcoes':
-                showOptions();
+                window.location.href = 'opcoes.html';
                 break;
             case 'sair':
                 window.close();
@@ -103,14 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function loadMainContent() {
-        fetch('content.html')
-            .then(response => response.text())
-            .then(data => {
-                const mainContent = document.getElementById('main-content');
-                if (mainContent) {
-                    mainContent.innerHTML = data;
-                    mainContent.style.display = 'block';
-                }
-            })
-            .catch(error => console.error('Erro ao carregar
+    showAvisoPrincipal();
+});
