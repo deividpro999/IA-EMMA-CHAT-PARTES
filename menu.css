@@ -1,29 +1,38 @@
 /* Estilo para o menu */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Evita barras de rolagem */
+}
+
 #menu {
-    position: absolute;
+    position: fixed; /* Fixa o menu na tela */
     top: 0;
-    right: 0;
-    width: 250px; /* Ajuste o tamanho conforme necessário */
-    height: 100vh;
+    left: 0;
+    width: 100vw; /* Largura total da tela */
+    height: 100vh; /* Altura total da tela */
     background-image: url('https://raw.githubusercontent.com/deividpro999/IA-EMMA-CHAT-PARTES/7dc32de15fd984badd66be46217084d6f86282a0/TELA%20DO%20MENU%20INICIAL.png');
-    background-size: cover;
+    background-size: cover; /* Faz com que a imagem cubra toda a área */
     background-position: center;
-    border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1000; /* Garante que o menu fique acima de outros elementos */
 }
 
 #menu button {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente para contraste */
     border: none;
-    color: white;
+    color: black;
     font-size: 20px;
     margin: 10px;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px; /* Adiciona bordas arredondadas aos botões */
 }
 
 #menu button:hover {
+    background: rgba(255, 255, 255, 1); /* Altera o fundo quando o botão é hover */
     text-decoration: underline;
 }
