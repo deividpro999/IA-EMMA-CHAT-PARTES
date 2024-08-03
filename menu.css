@@ -1,40 +1,83 @@
-/* Estilo para o menu */
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Evita barras de rolagem */
+    overflow: hidden;
+}
+
+#menu-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/blob/7dc32de15fd984badd66be46217084d6f86282a0/TELA%20DO%20MENU%20INICIAL.png') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
 }
 
 #menu {
-    position: fixed; /* Fixa o menu na tela */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Largura total da tela */
-    height: 100vh; /* Altura total da tela */
-    background-image: url('https://raw.githubusercontent.com/deividpro999/IA-EMMA-CHAT-PARTES/7dc32de15fd984badd66be46217084d6f86282a0/TELA%20DO%20MENU%20INICIAL.png');
-    background-size: cover; /* Faz com que a imagem cubra toda a área */
-    background-position: center;
-    background-repeat: no-repeat; /* Evita repetição da imagem */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    z-index: 1000; /* Garante que o menu fique acima de outros elementos */
+    z-index: 1;
 }
 
 #menu button {
-    background: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente para contraste */
-    border: none;
-    color: black;
-    font-size: 20px;
     margin: 10px;
     padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px; /* Adiciona bordas arredondadas aos botões */
-    z-index: 1001; /* Garante que os botões fiquem acima da imagem de fundo */
+    border-radius: 5px;
+    transition: background 0.3s;
 }
 
 #menu button:hover {
-    background: rgba(255, 255, 255, 1); /* Altera o fundo quando o botão é hover */
-    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#options-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#options-screen.hidden {
+    display: none;
+}
+
+#options-menu {
+    background: #333;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+#options-menu button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background: #555;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#options-menu button:hover {
+    background: #777;
 }
