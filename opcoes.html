@@ -20,44 +20,38 @@
             background: #333;
             border-radius: 10px;
             padding: 20px;
-            width: 300px;
             text-align: center;
         }
 
-        #options-menu button {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
+        button {
             background: #555;
             border: none;
+            padding: 10px 20px;
             color: #fff;
-            font-size: 16px;
+            margin: 10px;
             cursor: pointer;
-            border-radius: 5px;
+            font-size: 1em;
         }
 
-        #options-menu button:hover {
+        button:hover {
             background: #777;
         }
     </style>
 </head>
 <body>
     <div id="options-menu">
-        <h1>Escolha a Resolução</h1>
-        <button onclick="setResolution('1376x722')">1376x722</button>
-        <button onclick="setResolution('1920x1080')">1920x1080</button>
-        <button onclick="setResolution('1280x720')">1280x720</button>
+        <button onclick="Resolution('800x600')">800x600</button>
+        <button onclick="Resolution('1024x768')">1024x768</button>
         <button onclick="closeOptions()">Fechar</button>
     </div>
-
     <script>
-        function setResolution(resolution) {
+        function Resolution(resolution) {
             const [width, height] = resolution.split('x').map(Number);
             window.resizeTo(width, height);
         }
 
         function closeOptions() {
-            window.close();
+            window.close(); // Este comando fecha a janela atual
         }
     </script>
 </body>
