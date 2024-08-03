@@ -52,12 +52,12 @@
 
     <script>
         function setResolution(resolution) {
-            // Implementar lógica para mudar resolução aqui
-            alert('Resolução ' + resolution + ' selecionada!');
+            const [width, height] = resolution.split('x').map(Number);
+            window.resizeTo(width, height);
         }
 
         function closeOptions() {
-            window.location.href = 'menu.html'; // Voltar para o menu
+            window.close();
         }
     </script>
 </body>
