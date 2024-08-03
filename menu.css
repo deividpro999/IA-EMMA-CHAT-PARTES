@@ -31,6 +31,7 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px; /* Adiciona bordas arredondadas aos botões */
+    z-index: 1001; /* Garante que os botões fiquem acima da imagem de fundo */
 }
 
 #menu button:hover {
