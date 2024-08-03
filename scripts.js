@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         avisoPrincipal.style.display = 'none';
                         auraBackground.style.display = 'none';
                         showAvisoSecundario();
-                    }, 2000); // Tempo para desaparecer
-                }, 4000); // Tempo visível
+                    }, 2000);
+                }, 4000);
             }, 1000);
         }
     }
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             avisoSecundario.style.display = 'none';
                             showLoadingScreen();
-                        }, 2000); // Tempo para desaparecer
-                    }, 5000); // Tempo visível
+                        }, 2000);
+                    }, 5000);
                 }, 0);
-            }, 2000); // Atraso para leitura
+            }, 2000);
         }
     }
 
@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         loadingScreen.style.display = 'none';
                         loadMainContent();
-                    }, 500); // Tempo para desaparecer
-                }, 2000); // Tempo para aparecer
+                    }, 500);
+                }, 2000);
             }, 0);
         }
     }
 
     function loadMainContent() {
-        fetch('index.html')
+        fetch('content.html')
             .then(response => response.text())
             .then(data => {
                 const mainContent = document.getElementById('main-content');
@@ -99,19 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function navigateTo(option) {
         switch (option) {
             case 'novo-chat':
-                window.location.href = 'index.html'; // Redireciona para o conteúdo principal
+                window.location.href = 'index.html';
                 break;
             case 'carregar-chat':
-                window.location.href = 'carregar-chat.html'; // Redireciona para carregar chat
+                window.location.href = 'carregar-chat.html';
                 break;
             case 'modo-auto':
-                window.location.href = 'modo-auto.html'; // Redireciona para modo auto
+                window.location.href = 'modo-auto.html';
                 break;
             case 'opcoes':
-                window.location.href = 'opcoes.html'; // Redireciona para opções
+                window.location.href = 'opcoes.html';
                 break;
             case 'sair':
-                window.close(); // Fecha a janela
+                window.close();
                 break;
         }
     }
