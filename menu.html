@@ -12,7 +12,6 @@
     <div id="menu">
         <button onclick="navigateTo('index.html')">Novo chat</button>
         <button onclick="navigateTo('load-chat.html')">Carregar chat</button>
-        <button onclick="navigateTo('auto-mode.html')">Modo auto</button>
         <button onclick="openOptions()">Opções</button>
         <button onclick="exitApp()">Sair</button>
     </div>
@@ -29,10 +28,12 @@
 
         function openOptions() {
             document.getElementById('options-screen').classList.remove('hidden');
+            document.getElementById('menu').classList.add('hidden');
         }
 
         function closeOptions() {
             document.getElementById('options-screen').classList.add('hidden');
+            document.getElementById('menu').classList.remove('hidden');
         }
 
         function setResolution(resolution) {
