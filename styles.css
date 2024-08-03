@@ -25,12 +25,12 @@ body {
     transform: translate(-50%, -50%);
     font-size: 2em;
     text-align: center;
-    font-weight: bold; /* Negrito */
+    font-weight: bold;
     z-index: 2;
 }
 
 #aviso-principal.aura {
-    animation: aura 4s ease-in-out; /* Adiciona a aura branca */
+    animation: aura 4s ease-in-out;
 }
 
 @keyframes aura {
