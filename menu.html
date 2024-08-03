@@ -1,7 +1,19 @@
-<div id="menu">
-    <button data-option="novo-chat">Novo Chat</button>
-    <button data-option="carregar-chat">Carregar Chat</button>
-    <button data-option="modo-auto">Modo Auto</button>
-    <button data-option="opcoes">Opções</button>
-    <button data-option="sair">Sair</button>
-</div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="menu.css">
+    <script src="menu.js" defer></script>
+</head>
+<body>
+    <div id="menu">
+        <button onclick="navigateTo('index')">Novo chat</button>
+        <button onclick="navigateTo('carregar')">Carregar chat</button>
+        <button onclick="navigateTo('auto')">Modo auto</button>
+        <button onclick="navigateTo('opcoes')">Opções</button>
+        <button id="exit">Sair</button>
+    </div>
+</body>
+</html>
