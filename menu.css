@@ -14,6 +14,7 @@ body {
     background-image: url('https://raw.githubusercontent.com/deividpro999/IA-EMMA-CHAT-PARTES/7dc32de15fd984badd66be46217084d6f86282a0/TELA%20DO%20MENU%20INICIAL.png');
     background-size: cover; /* Faz com que a imagem cubra toda a área */
     background-position: center;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
     display: flex;
     flex-direction: column;
     align-items: center;
