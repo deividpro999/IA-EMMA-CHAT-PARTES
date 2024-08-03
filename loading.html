@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Carregamento</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Carregando...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #loading {
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
-    <div id="loading-screen">
-        <p>Carregando...</p>
-    </div>
+    <div id="loading">Carregando...</div>
+    <script>
+        // Após 3 segundos, redireciona para o menu
+        setTimeout(function() {
+            window.location.href = 'menu.html';
+        }, 3000);
+    </script>
 </body>
 </html>
