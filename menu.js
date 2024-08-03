@@ -1,55 +1,57 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Adiciona funcionalidade aos botões
-    document.getElementById('menu').addEventListener('click', function(event) {
-        const target = event.target;
-        if (target.tagName === 'BUTTON') {
-            if (target.textContent === 'Novo chat') {
-                navigateTo('index.html');
-            } else if (target.textContent === 'Carregar chat') {
-                navigateTo('load-chat.html');
-            } else if (target.textContent === 'Opções') {
-                openOptions();
-            } else if (target.textContent === 'Sair') {
-                exitApp();
-            }
+    // Definição das funções
+    
+    // Função para navegação
+    function navigateTo(option) {
+        switch (option) {
+            case 'novo-chat':
+                window.location.href = 'index.html';
+                break;
+            case 'carregar-chat':
+                window.location.href = 'carregar.html';
+                break;
+            case 'opcoes':
+                document.getElementById('options-screen').classList.remove('hidden');
+                break;
+            case 'sair':
+                window.close(); // Fechar a aba/ventana
+                break;
         }
+    }
+
+    // Função para abrir opções
+    function openOptions() {
+        document.getElementById('options-screen').classList.remove('hidden');
+    }
+
+    // Função para fechar opções
+    function closeOptions() {
+        document.getElementById('options-screen').classList.add('hidden');
+    }
+
+    // Função para sair da aplicação
+    function exitApp() {
+        window.close();
+    }
+
+    // Adicionando eventos aos botões
+    document.getElementById('novo-chat').addEventListener('click', function() {
+        navigateTo('novo-chat');
     });
 
-    document.getElementById('options-menu').addEventListener('click', function(event) {
-        const target = event.target;
-        if (target.tagName === 'BUTTON') {
-            if (target.textContent === '1376x722') {
-                setResolution('1376x722');
-            } else if (target.textContent === '1920x1080') {
-                setResolution('1920x1080');
-            } else if (target.textContent === '1280x720') {
-                setResolution('1280x720');
-            } else if (target.textContent === 'Fechar Opções') {
-                closeOptions();
-            }
-        }
+    document.getElementById('carregar-chat').addEventListener('click', function() {
+        navigateTo('carregar-chat');
+    });
+
+    document.getElementById('opcoes').addEventListener('click', function() {
+        openOptions();
+    });
+
+    document.getElementById('sair').addEventListener('click', function() {
+        exitApp();
+    });
+
+    document.getElementById('close-options').addEventListener('click', function() {
+        closeOptions();
     });
 });
-
-function navigateTo(page) {
-    window.location.href = page;
-}
-
-function openOptions() {
-    document.getElementById('options-screen').classList.remove('hidden');
-    document.getElementById('menu').classList.add('hidden');
-}
-
-function closeOptions() {
-    document.getElementById('options-screen').classList.add('hidden');
-    document.getElementById('menu').classList.remove('hidden');
-}
-
-function setResolution(resolution) {
-    // Implementar lógica para mudar resolução aqui
-    alert('Resolução ' + resolution + ' selecionada!');
-}
-
-function exitApp() {
-    window.close(); // Para ambiente local, pode não funcionar como esperado
-}
