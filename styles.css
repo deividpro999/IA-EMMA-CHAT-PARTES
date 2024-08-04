@@ -108,7 +108,7 @@ body {
     border: none;
     color: #fff;
     font-size: 1.5em;
-    margin: 10px 0;
+    margin: 10px 0; /* Espaçamento entre os botões */
     cursor: pointer;
 }
 
