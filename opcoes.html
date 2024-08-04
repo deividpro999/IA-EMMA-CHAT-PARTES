@@ -36,22 +36,41 @@
         button:hover {
             background: #777;
         }
+
+        #main-content {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background-color: #123456; /* Cor sólida para a nova página */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <div id="options-menu">
-        <button onclick="Resolution('800x600')">800x600</button>
-        <button onclick="Resolution('1024x768')">1024x768</button>
+        <button onclick="abrirNovoConteudo()">Novo Conteúdo</button>
         <button onclick="closeOptions()">Fechar</button>
     </div>
+    <div id="main-content">
+        <h1>Novo Conteúdo</h1>
+        <button onclick="voltarMenu()">Voltar</button>
+    </div>
     <script>
-        function Resolution(resolution) {
-            const [width, height] = resolution.split('x').map(Number);
-            window.resizeTo(width, height);
+        function abrirNovoConteudo() {
+            document.getElementById('options-menu').style.display = 'none';
+            document.getElementById('main-content').style.display = 'flex';
         }
 
         function closeOptions() {
-            window.close(); // Este comando fecha a janela atual
+            document.getElementById('options-menu').style.display = 'none';
+        }
+
+        function voltarMenu() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('options-menu').style.display = 'flex';
         }
     </script>
 </body>
