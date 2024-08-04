@@ -29,12 +29,12 @@
 
         #menu {
             background: rgba(0, 0, 0, 0.5); /* Fundo menos escuro para o menu principal */
-            z-index: 0;
+            z-index: 1;
         }
 
         #submenu {
             display: none;
-            z-index: 1;
+            z-index: 2;
         }
 
         button {
@@ -54,7 +54,7 @@
 </head>
 <body>
     <div id="menu">
-        <button onclick="abrirSubmenu()">Opçõe</button>
+        <button onclick="abrirSubmenu()">Opções</button>
         <!-- Outros botões do menu -->
     </div>
 
@@ -65,7 +65,6 @@
 
     <script>
         function abrirSubmenu() {
-            document.getElementById('menu').style.display = 'none';
             document.getElementById('submenu').style.display = 'flex';
         }
 
