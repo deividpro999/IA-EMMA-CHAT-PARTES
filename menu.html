@@ -1,60 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Inicial</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: url('https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/1f3abf9403b6c13b06a8a8edf0e2e59b7fe36376/TELA%20DO%20MENU%20INICIAL.png') no-repeat center center;
-            background-size: cover;
-            color: #fff;
-        }
-
-        #menu {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        #menu button {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5em;
-            margin: 10px 0;
-            cursor: pointer;
-        }
-
-        #menu button:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div id="menu">
-        <button onclick="iniciarChat()">Novo Chat</button>
-        <button onclick="abrirOpcoes()">Opções</button>
-    </div>
-    <script>
-        function iniciarChat() {
-            // Lógica para iniciar o chat
-        }
-
-        function abrirOpcoes() {
-            window.location.href = 'opcoes.html'; // Abre as opções na mesma guia
-        }
-    </script>
-</body>
-</html>
+<div id="menu">
+    <button data-option="novo-chat">Novo Chat</button>
+    <button data-option="carregar-chat">Carregar Chat</button>
+    <button data-option="modo-auto">Modo Automático</button>
+    <button data-option="opcoes">Opções</button>
+    <button data-option="sair">Sair</button>
+</div>
