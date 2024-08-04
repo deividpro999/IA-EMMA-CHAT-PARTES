@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionando...</title>
+    <title>Menu com Salvar Configurações</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js" defer></script>
 </head>
 <body>
-    <div id="aura-background"></div>
     <div id="aviso-principal">DIRETOR ANIMATION</div>
     <div id="aviso-secundario"></div>
     <div id="loading-screen">Carregando...</div>
-    <div id="main-content"></div>
+    <div id="main-content">
+        <!-- Conteúdo principal aqui -->
+        <h1>Bem-vindo ao Novo Chat!</h1>
+    </div>
+    <div id="menu">
+        <button data-option="novo-chat">Novo Chat</button>
+        <button data-option="carregar-chat">Carregar Chat</button>
+        <button data-option="modo-auto">Modo Auto</button>
+        <button data-option="opcoes">Opções</button>
+        <button data-option="sair">Sair</button>
+        <button id="save-settings">Salvar Configurações</button> <!-- Botão para salvar configurações -->
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
