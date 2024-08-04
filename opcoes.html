@@ -24,16 +24,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9); /* Fundo sólido para o submenu */
+            z-index: 1;
         }
 
         #menu {
             background: rgba(0, 0, 0, 0.5); /* Fundo menos escuro para o menu principal */
-            z-index: 1;
         }
 
         #submenu {
-            display: none;
+            display: none; /* Oculto inicialmente */
+            background: rgba(0, 0, 0, 0.8); /* Fundo mais escuro para o submenu */
             z-index: 2;
         }
 
@@ -55,22 +55,28 @@
 <body>
     <div id="menu">
         <button onclick="abrirSubmenu()">Opções</button>
-        <!-- Outros botões do menu -->
+        <button data-option="novo-chat">Novo Chat</button>
+        <button data-option="carregar-chat">Carregar Chat</button>
+        <button data-option="modo-auto">Modo Automático</button>
+        <button data-option="sair">Sair</button>
     </div>
 
     <div id="submenu">
         <button onclick="fecharSubmenu()">Fechar</button>
+        <button onclick="novoRecurso('800x600')">800x600</button>
+        <button onclick="novoRecurso('1024x768')">1024x768</button>
         <!-- Adicione mais botões conforme necessário -->
     </div>
 
     <script>
         function abrirSubmenu() {
-            document.getElementById('submenu').style.display = 'flex';
+            document.getElementById('menu').style.display = 'none'; // Esconde o menu principal
+            document.getElementById('submenu').style.display = 'flex'; // Mostra o submenu
         }
 
         function fecharSubmenu() {
-            document.getElementById('submenu').style.display = 'none';
-            document.getElementById('menu').style.display = 'flex';
+            document.getElementById('submenu').style.display = 'none'; // Esconde o submenu
+            document.getElementById('menu').style.display = 'flex'; // Mostra o menu principal
         }
 
         function novoRecurso(resolution) {
