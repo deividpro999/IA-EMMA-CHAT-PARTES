@@ -8,19 +8,33 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Cor de fundo sólida */
             color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            overflow: hidden; /* Remove barras de rolagem */
         }
 
-        #options-menu {
-            background: #333;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
+        #menu, #submenu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9); /* Fundo sólido para o submenu */
+        }
+
+        #menu {
+            background: rgba(0, 0, 0, 0.5); /* Fundo menos escuro para o menu principal */
+            z-index: 1;
+        }
+
+        #submenu {
+            display: none;
+            z-index: 2;
         }
 
         button {
@@ -30,47 +44,40 @@
             color: #fff;
             margin: 10px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.5em;
         }
 
         button:hover {
             background: #777;
         }
-
-        #main-content {
-            display: none;
-            width: 100vw;
-            height: 100vh;
-            background-color: #123456; /* Cor sólida para a nova página */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
     </style>
 </head>
 <body>
-    <div id="options-menu">
-        <button onclick="abrirNovoConteudo()">Novo Conteúdo</button>
-        <button onclick="closeOptions()">Fechar</button>
+    <div id="menu">
+        <button onclick="abrirSubmenu()">Opções</button>
+        <!-- Outros botões do menu -->
     </div>
-    <div id="main-content">
-        <h1>Novo Conteúdo</h1>
-        <button onclick="voltarMenu()">Voltar</button>
+
+    <div id="submenu">
+        <button onclick="fecharSubmenu()">Fechar</button>
+        <button onclick="novoRecurso('800x600')">800x600</button>
+        <button onclick="novoRecurso('1024x768')">1024x768</button>
+        <!-- Adicione mais botões conforme necessário -->
     </div>
+
     <script>
-        function abrirNovoConteudo() {
-            document.getElementById('options-menu').style.display = 'none';
-            document.getElementById('main-content').style.display = 'flex';
+        function abrirSubmenu() {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('submenu').style.display = 'flex';
         }
 
-        function closeOptions() {
-            window.history.back(); // Volta à página anterior na mesma guia
+        function fecharSubmenu() {
+            document.getElementById('submenu').style.display = 'none';
+            document.getElementById('menu').style.display = 'flex';
         }
 
-        function voltarMenu() {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('options-menu').style.display = 'flex';
+        function novoRecurso(resolution) {
+            alert(`Novo recurso para a resolução ${resolution}`); // Substitua por funcionalidade real
         }
     </script>
 </body>
