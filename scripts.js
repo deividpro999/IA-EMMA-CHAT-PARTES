@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'modo-auto.html';
                 break;
             case 'opcoes':
-                showOptions();
+                window.open('opcoes.html', 'Opções', 'width=400,height=400');
                 break;
             case 'sair':
                 window.close();
@@ -113,4 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     mainContent.style.display = 'block';
                 }
             })
-            .catch(error => console.error('Erro ao carregar
+            .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+    }
+
+    showAvisoPrincipal();
+});
