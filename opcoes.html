@@ -14,7 +14,7 @@
             overflow: hidden; /* Remove barras de rolagem */
         }
 
-        #menu, #submenu {
+      #submenu {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -27,8 +27,6 @@
             z-index: 1;
         }
 
-        #menu {
-            background: rgba(0, 0, 0, 0.5); /* Fundo menos escuro para o menu principal */
         }
 
         #submenu {
@@ -53,27 +51,26 @@
     </style>
 </head>
 <body>
-    <div id="menu">
+    <div id="submenu">
         <button onclick="abrirSubmenu()">Posição dos Botões</button>
         <button data-option="sair">Sair</button>
     </div>
 
     <div id="submenu">
         <button onclick="fecharSubmenu()">Fechar</button>
-        <button onclick="novoRecurso('800x600')">800x600</button>
         <button onclick="novoRecurso('1024x768')">1024x768</button>
         <!-- Adicione mais botões conforme necessário -->
     </div>
 
     <script>
         function abrirSubmenu() {
-            document.getElementById('menu').style.display = 'none'; // Esconde o menu principal
+            document.getElementById('submenu').style.display = 'flex'; // Esconde o menu principal
             document.getElementById('submenu').style.display = 'flex'; // Mostra o submenu
         }
 
         function fecharSubmenu() {
-            document.getElementById('submenu').style.display = 'none'; // Esconde o submenu
-            document.getElementById('menu').style.display = 'flex'; // Mostra o menu principal
+            document.getElementById('submenu').style.display = 'flex'; // Esconde o submenu
+            document.getElementById('submenu').style.display = 'flex'; // Mostra o menu principal
         }
 
         function novoRecurso(resolution) {
