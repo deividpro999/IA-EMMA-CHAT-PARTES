@@ -53,19 +53,16 @@
 <body>
     <div id="submenu">
         <button onclick="fecharSubmenu()">Fechar</button>
-        <button onclick="novoRecurso('1024x768')">1024x768</button>
         <!-- Adicione mais botões conforme necessário -->
     </div>
 
     <script>
         function abrirSubmenu() {
-            document.getElementById('submenu').style.display = 'flex'; // Esconde o menu principal
             document.getElementById('submenu').style.display = 'flex'; // Mostra o submenu
         }
 
         function fecharSubmenu() {
             document.getElementById('submenu').style.display = 'flex'; // Esconde o submenu
-            document.getElementById('submenu').style.display = 'flex'; // Mostra o menu principal
         }
 
         function novoRecurso(resolution) {
