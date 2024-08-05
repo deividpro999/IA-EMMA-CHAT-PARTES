@@ -3,56 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Inicial</title>
+    <title>Menu Principal</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: url('https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/1f3abf9403b6c13b06a8a8edf0e2e59b7fe36376/TELA%20DO%20MENU%20INICIAL.png') no-repeat center center;
-            background-size: cover;
-            color: #fff;
+            overflow: hidden;
         }
 
-        #menu, #submenu {
+        #menu {
             display: flex;
             flex-direction: column;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            background: url('https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/1f3abf9403b6c13b06a8a8edf0e2e59b7fe36376/TELA%20DO%20MENU%20INICIAL.png') no-repeat center center;
+            background-size: cover;
+            width: 1376px;
+            height: 772px;
+            position: relative;
         }
 
-        #menu button, #submenu button {
-            background: none;
+        button {
+            background: #555;
             border: none;
+            padding: 10px 20px;
             color: #fff;
-            font-size: 1.5em;
-            margin: 10px 0;
+            margin: 10px;
             cursor: pointer;
+            font-size: 1.5em;
+            transition: background 0.3s;
         }
 
-        #menu button:hover, #submenu button:hover {
-            text-decoration: underline;
+        button:hover {
+            background: #777;
         }
 
-        #submenu {
+        #options {
             display: none;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.7);
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
+        #slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #slider {
+            width: 300px;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
@@ -60,30 +76,32 @@
         <button data-option="novo-chat">Novo Chat</button>
         <button data-option="carregar-chat">Carregar Chat</button>
         <button data-option="modo-auto">Modo Automático</button>
-        <button data-option="opcoes" onclick="abrirSubmenu()">Opções</button>
+        <button data-option="opcoes">Opções</button>
         <button data-option="sair">Sair</button>
     </div>
-
-    <div id="submenu">
-        <button onclick="voltarMenu()">Voltar</button>
-        <button onclick="closeSubmenu()">Fechar</button>
-        <!-- Adicione mais botões conforme necessário -->
+    <div id="options">
+        <div id="slider-container">
+            <label for="slider">Mova os botões:</label>
+            <input type="range" id="slider" min="0" max="200" value="0">
+        </div>
+        <button onclick="applyChanges()">Aplicar</button>
     </div>
-
     <script>
-        function abrirSubmenu() {
-            document.getElementById('menu').style.display = 'none';
-            document.getElementById('submenu').style.display = 'flex';
-        }
+        const menu = document.getElementById('menu');
+        const options = document.getElementById('options');
+        const slider = document.getElementById('slider');
 
-        function voltarMenu() {
-            document.getElementById('submenu').style.display = 'none';
-            document.getElementById('menu').style.display = 'flex';
-        }
+        document.querySelector('button[data-option="opcoes"]').addEventListener('click', () => {
+            options.style.display = 'flex';
+        });
 
-        function closeSubmenu() {
-            // Aqui você pode adicionar lógica adicional se necessário
-            voltarMenu();
+        slider.addEventListener('input', (event) => {
+            const value = event.target.value;
+            menu.style.transform = `translateY(${value}px)`;
+        });
+
+        function applyChanges() {
+            options.style.display = 'none';
         }
     </script>
 </body>
