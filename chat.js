@@ -2,7 +2,6 @@
 
 // Função que envia a mensagem
 function sendMessage() {
-    // Captura a mensagem do usuário
     const userInput = document.getElementById('user-input').value;
     if (userInput.trim() === '') return; // Não envia se o campo estiver vazio
     
@@ -26,12 +25,10 @@ function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Função para determinar a resposta da Emma com base no texto do usuário
 function getEmmaResponse(userMessage) {
     const responses = {
         'Oi': 'Oi, como posso ajudar?',
         'Como você está?': 'Estou bem, obrigada por perguntar!',
-        // Adicione mais respostas aqui conforme necessário
     };
 
     return responses[userMessage] || 'Desculpe, não entendi sua pergunta.';
