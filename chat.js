@@ -1,46 +1,38 @@
 // chat.js
 
-const chatBox = document.getElementById('chat-box');
-const userInput = document.getElementById('user-input');
-
+// Função que envia a mensagem
 function sendMessage() {
-  const userMessage = userInput.value;
-  if (userMessage.trim() === "") return;
+    // Captura a mensagem do usuário
+    const userInput = document.getElementById('user-input').value;
+    if (userInput.trim() === '') return; // Não envia se o campo estiver vazio
+    
+    // Exibe a mensagem do usuário no chat
+    const chatBox = document.getElementById('chat-box');
+    const userMessage = document.createElement('div');
+    userMessage.classList.add('message', 'user-message');
+    userMessage.textContent = userInput;
+    chatBox.appendChild(userMessage);
 
-  // Exibe a mensagem do usuário
-  const userDiv = document.createElement('div');
-  userDiv.classList.add('message', 'user-message');
-  userDiv.textContent = userMessage;
-  chatBox.appendChild(userDiv);
+    // Limpa o campo de entrada
+    document.getElementById('user-input').value = '';
 
-  // Limpa o campo de entrada
-  userInput.value = '';
+    // Responde com uma mensagem da Emma
+    const emmaMessage = document.createElement('div');
+    emmaMessage.classList.add('message', 'emma-message');
+    emmaMessage.textContent = getEmmaResponse(userInput);
+    chatBox.appendChild(emmaMessage);
 
-  // Responde com a Emma
-  setTimeout(() => {
-    const emmaMessage = getEmmaResponse(userMessage);
-    const emmaDiv = document.createElement('div');
-    emmaDiv.classList.add('message', 'emma-message');
-    emmaDiv.textContent = emmaMessage.text;
-    chatBox.appendChild(emmaDiv);
-
-    // Toca o áudio (se existir)
-    if (emmaMessage.audio) {
-      const audio = new Audio(emmaMessage.audio);
-      audio.play();
-    }
-
-    // Rolando para o final do chat
+    // Rola para o fundo do chat
     chatBox.scrollTop = chatBox.scrollHeight;
-  }, 1000);
 }
 
-function getEmmaResponse(message) {
-  const responses = {
-    "Oi": { text: "Oi, como posso ajudar?", audio: "audio/oi.mp3" },
-    "Como você está?": { text: "Estou bem, obrigada por perguntar!", audio: "audio/estou-bem.mp3" },
-    // Adicione mais respostas e áudios aqui
-  };
+// Função para determinar a resposta da Emma com base no texto do usuário
+function getEmmaResponse(userMessage) {
+    const responses = {
+        'Oi': 'Oi, como posso ajudar?',
+        'Como você está?': 'Estou bem, obrigada por perguntar!',
+        // Adicione mais respostas aqui conforme necessário
+    };
 
-  return responses[message] || { text: "Desculpe, não entendi. Pode tentar outra coisa?", audio: "audio/erro.mp3" };
+    return responses[userMessage] || 'Desculpe, não entendi sua pergunta.';
 }
