@@ -1,34 +1,43 @@
-// Definindo a função sendMessage
-function sendMessage() {
-    const userInput = document.getElementById('user-input').value;
-    if (userInput.trim() === '') return; // Não envia se o campo estiver vazio
-    
-    // Exibe a mensagem do usuário no chat
-    const chatBox = document.getElementById('chat-box');
-    const userMessage = document.createElement('div');
-    userMessage.classList.add('message', 'user-message');
-    userMessage.textContent = userInput;
-    chatBox.appendChild(userMessage);
+document.addEventListener('DOMContentLoaded', function () {
+  const sendBtn = document.getElementById('send-btn');
+  const userInput = document.getElementById('user-input');
+  const chatBox = document.getElementById('chat-box');
 
-    // Limpa o campo de entrada
-    document.getElementById('user-input').value = '';
+  sendBtn.addEventListener('click', sendMessage);
+  userInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') sendMessage();
+  });
 
-    // Responde com uma mensagem da Emma
-    const emmaMessage = document.createElement('div');
-    emmaMessage.classList.add('message', 'emma-message');
-    emmaMessage.textContent = getEmmaResponse(userInput);
-    chatBox.appendChild(emmaMessage);
+  function sendMessage() {
+    const text = userInput.value.trim();
+    if (text === '') return;
 
-    // Rola para o fundo do chat
+    appendMessage('user', text);
+    userInput.value = '';
+
+    setTimeout(() => {
+      const resposta = getResposta(text);
+      appendMessage('emma', resposta);
+    }, 500);
+  }
+
+  function appendMessage(sender, text) {
+    const msg = document.createElement('div');
+    msg.classList.add('message');
+    msg.classList.add(sender === 'user' ? 'user-message' : 'emma-message');
+    msg.textContent = text;
+    chatBox.appendChild(msg);
     chatBox.scrollTop = chatBox.scrollHeight;
-}
+  }
 
-// Função para determinar a resposta da Emma com base no texto do usuário
-function getEmmaResponse(userMessage) {
-    const responses = {
-        'Oi': 'Oi, como posso ajudar?',
-        'Como você está?': 'Estou bem, obrigada por perguntar!',
+  function getResposta(texto) {
+    const respostas = {
+      'oi': 'Oi chefinho! Tudo bem?',
+      'tudo bem': 'Que bom! Comigo também!',
+      'quem é você?': 'Sou a Emma, sua assistente virtual 😄',
     };
 
-    return responses[userMessage] || 'Desculpe, não entendi sua pergunta.';
-}
+    const entrada = texto.toLowerCase();
+    return respostas[entrada] || 'Hmm... ainda não aprendi isso!';
+  }
+});
