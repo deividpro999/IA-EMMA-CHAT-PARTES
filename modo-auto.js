@@ -23,7 +23,7 @@ function iniciarModoAuto() {
     enviarMensagem("Boa noite! O que você conquistou hoje?", "audios/boa-noite.mp3");
   }
 
-  // Enviar frases motivacionais aleatórias
+  // Enviar frases motivacionais aleatórias com intervalo
   setInterval(() => {
     const mensagemMotivacional = mensagens[Math.floor(Math.random() * 3) + 3];
     enviarMensagem(mensagemMotivacional.texto, mensagemMotivacional.audio);
@@ -41,4 +41,7 @@ function enviarMensagem(texto, audioSrc) {
   // Toca o áudio
   const audio = new Audio(audioSrc);
   audio.play();
+
+  // Rolagem automática para mostrar a última mensagem
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
