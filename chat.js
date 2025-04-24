@@ -1,6 +1,4 @@
-// chat.js
-
-// Função que envia a mensagem
+// Definindo a função sendMessage
 function sendMessage() {
     const userInput = document.getElementById('user-input').value;
     if (userInput.trim() === '') return; // Não envia se o campo estiver vazio
@@ -25,6 +23,7 @@ function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+// Função para determinar a resposta da Emma com base no texto do usuário
 function getEmmaResponse(userMessage) {
     const responses = {
         'Oi': 'Oi, como posso ajudar?',
