@@ -2,21 +2,17 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Chat da Emma</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Chat com Emma</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div id="chat-box">
-    <!-- Mensagens serão exibidas aqui -->
-  </div>
-  <input type="text" id="user-input" placeholder="Digite sua mensagem..." onkeydown="if(event.key === 'Enter') sendMessage()">
+  <div id="chat-box"></div>
+  <input type="text" id="user-input" placeholder="Digite sua mensagem...">
   <button onclick="sendMessage()">Enviar</button>
 
-  <!-- Carregar os arquivos JS específicos para o chat -->
-  <script src="js/audio.js"></script>  <!-- Se necessário -->
-  <script src="js/chat.js"></script>   <!-- Arquivo que define a função sendMessage -->
-  <script src="js/main.js"></script>   <!-- Outros recursos do app, se necessário -->
+  <!-- Carregar o chat.js -->
+  <script src="chat.js"></script>
 
 </body>
 </html>
