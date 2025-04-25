@@ -5,27 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modo Auto</title>
 
-  <!-- Fontes -->
+  <!-- Fontes e estilos -->
+  <link rel="stylesheet" href="modo-auto.css">
+  <link rel="stylesheet" href="config-modo-auto.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Poppins&family=Rubik+Moonrocks&display=swap" rel="stylesheet">
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="modo-auto.css">
-  <link rel="stylesheet" href="config-modo-auto.css">
 </head>
 <body>
 
-  <!-- Área de configuração -->
+  <!-- Configurações carregadas -->
   <div id="config-area"></div>
 
   <!-- Chat automático -->
   <div id="chat-box"></div>
-
-  <!-- Botão de iniciar -->
   <button onclick="iniciarModoAuto()">Iniciar Modo Auto</button>
 
   <!-- Scripts -->
+  <script src="modo-auto.js"></script>
   <script>
     fetch('config-modo-auto.html')
       .then(res => res.text())
@@ -33,8 +30,6 @@
         document.getElementById('config-area').innerHTML = data;
       });
   </script>
-  <script src="modo-auto.js"></script>
   <script src="config-modo-auto.js"></script>
-
 </body>
 </html>
