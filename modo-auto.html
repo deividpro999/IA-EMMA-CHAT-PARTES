@@ -6,6 +6,30 @@
     <title>Modo Auto</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="modo-auto.css"> <!-- Vincula o arquivo CSS -->
+    <head>
+  <link rel="stylesheet" href="modo-auto.css">
+  <link rel="stylesheet" href="config-modo-auto.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&family=Poppins&family=Rubik+Moonrocks&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Carrega o HTML separado -->
+  <div id="config-area"></div>
+
+  <!-- Chat automático -->
+  <div id="chat-box"></div>
+
+  <!-- Scripts -->
+  <script>
+    fetch('config-modo-auto.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('config-area').innerHTML = data;
+      });
+  </script>
+  <script src="config-modo-auto.js"></script>
+</body>
 </head>
 <body>
     <h1>Modo Auto</h1>
