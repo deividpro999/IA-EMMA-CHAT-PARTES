@@ -1,6 +1,5 @@
 body {
-  font-family: 'Poppins', sans-serif;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Poppins', 'Bebas Neue', sans-serif;
 }
   background-color: #f7f7f7;
   margin: 0;
