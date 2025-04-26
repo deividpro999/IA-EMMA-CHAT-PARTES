@@ -27,12 +27,13 @@ h1 {
 }
 
 .mensagem {
-    background: rgba(0, 0, 0, 0.5); /* Preto com 50% de transparência */
-    color: #ffffff; /* Texto branco */
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Sombrinha no texto */
+    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para contraste */
+    color: #ffffff; /* Texto branco para melhorar a visibilidade */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Sombrinha no texto */
     padding: 10px;
     border-radius: 10px;
-    max-width: 70%;
     margin: 10px 0;
+    max-width: 75%;
+    line-height: 1.5; /* Aumenta a altura da linha para melhor leitura */
 }
 
