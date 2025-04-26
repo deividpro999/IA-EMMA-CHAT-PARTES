@@ -15,16 +15,14 @@ h1 {
 }
 
 #chat-box {
-  width: 600%;
-  max-width: 900px;
-  height: 80vh; /* Altura maior */
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  background-color: #fff;
-  padding: 15px;
+  width: 90vw; /* Aumenta a largura para ocupar 90% da tela */
+  max-width: 1000px; /* Limita para não ficar gigante demais em telas grandes */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05); /* fundo transparente suave */
+  border-radius: 20px;
   overflow-y: auto;
-  margin-top: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 70vh; /* altura pra manter um bom espaço vertical também */
 }
 
 .message {
