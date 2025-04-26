@@ -1,3 +1,9 @@
+// Função para abrir/fechar o menu (ESSA É A QUE ESTÁ FALTANDO!)
+function toggleConfigMenu() {
+  const menu = document.getElementById('config-menu');
+  menu.classList.toggle('hidden');
+}
+
 // Função para trocar a fonte e salvar no localStorage
 function trocarFonte(fonte) {
   document.body.style.fontFamily = fonte;
