@@ -16,7 +16,7 @@ h1 {
 
 #chat-box {
   width: 600%;
-  max-width: 600px;
+  max-width: 900px;
   height: 80vh; /* Altura maior */
   border: 2px solid #ddd;
   border-radius: 10px;
