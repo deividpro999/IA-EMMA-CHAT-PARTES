@@ -1,5 +1,5 @@
 const mensagens = [
-  { hora: 6, texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "audios/bom-dia.mp3" },
+  { hora: 6, texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "audios/https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/blob/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3" },
   { hora: 12, texto: "Boa tarde! Como você está se sentindo hoje?", audio: "audios/boa-tarde.mp3" },
   { hora: 18, texto: "Boa noite! O que você conquistou hoje?", audio: "audios/boa-noite.mp3" },
   { texto: "Nunca desista! Cada passo é uma vitória.", audio: "audios/motivacional1.mp3" },
