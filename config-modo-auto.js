@@ -23,10 +23,17 @@ function trocarFundo(fundo) {
   localStorage.setItem('fundo', fundo);  // Salva o fundo no localStorage
 }
 
+// Função para trocar a cor Neon e salvar no localStorage
+function trocarNeon(cor) {
+  document.documentElement.style.setProperty('--cor-neon', cor);  // Aplica a cor Neon
+  localStorage.setItem('neon', cor);  // Salva no localStorage
+}
+
 // Função para carregar as configurações salvas quando a página é carregada
 window.onload = function() {
   const font = localStorage.getItem('font');
   const fundo = localStorage.getItem('fundo');
+  const neon = localStorage.getItem('neon');
 
   // Aplica a fonte salva, se houver
   if (font) {
@@ -43,5 +50,10 @@ window.onload = function() {
       document.body.style.backgroundImage = "";
       document.body.style.backgroundColor = fundo;
     }
+  }
+
+  // Aplica a cor Neon salva, se houver
+  if (neon) {
+    document.documentElement.style.setProperty('--cor-neon', neon);
   }
 };
