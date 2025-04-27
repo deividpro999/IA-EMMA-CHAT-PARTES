@@ -8,13 +8,16 @@ const mensagens = [
   { texto: "Agora o Vilgax vai sentir o gosto do grandão!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/97f217011f34f5ed981285d07f9c522b8b432942/audios/Agora%20o%20Vilgax%20vai%20Sentir%20o%20Gosto%20do%20Grand%C3%A3o!.mp3" }
 ];
 
+let mensagensNaoFaladas = []; // Lista das frases que ainda não foram faladas
+
 function iniciarModoAuto() {
   const chatBox = document.getElementById("chat-box");
   chatBox.innerHTML = ""; // Limpa o chat
 
+  // Verifica a hora atual
   const horaAtual = new Date().getHours();
 
-  // Mensagem inicial dependendo da hora
+  // Saudação de acordo com a hora
   if (horaAtual >= 6 && horaAtual < 12) {
     enviarMensagem(mensagens[0].texto, mensagens[0].audio);
   } else if (horaAtual >= 12 && horaAtual < 18) {
@@ -23,41 +26,46 @@ function iniciarModoAuto() {
     enviarMensagem(mensagens[2].texto, mensagens[2].audio);
   }
 
-  // Depois de um tempo, começar as frases motivacionais
+  // Preenche a lista de frases motivacionais (sem as saudações)
+  mensagensNaoFaladas = mensagens.slice(3);
+
+  // Começar a enviar as frases
   setTimeout(() => {
-    tocarMensagensMotivacionais();
-  }, 5000); // Espera 5 segundos depois da mensagem inicial
+    enviarProximaMensagem();
+  }, 3000); // Espera 3 segundos depois da saudação
 }
 
-async function tocarMensagensMotivacionais() {
-  while (true) {
-    const motivacionais = mensagens.slice(3); // Pega só as motivacionais
-    const mensagem = motivacionais[Math.floor(Math.random() * motivacionais.length)];
-    await enviarMensagem(mensagem.texto, mensagem.audio);
-    await esperar(15); // Espera 15 segundos antes da próxima
+function enviarProximaMensagem() {
+  if (mensagensNaoFaladas.length === 0) {
+    console.log("Todas as mensagens já foram faladas!");
+    return;
   }
+
+  const chatBox = document.getElementById("chat-box");
+
+  // Pega a próxima mensagem da lista
+  const mensagem = mensagensNaoFaladas.shift();
+
+  // Exibe e toca o áudio
+  enviarMensagem(mensagem.texto, mensagem.audio);
+
+  // Programa a próxima mensagem
+  setTimeout(() => {
+    enviarProximaMensagem();
+  }, 6000); // 6 segundos entre uma mensagem e outra (mais rápido)
 }
 
 function enviarMensagem(texto, audioSrc) {
-  return new Promise((resolve) => {
-    const chatBox = document.getElementById("chat-box");
+  const chatBox = document.getElementById("chat-box");
 
-    const div = document.createElement("div");
-    div.textContent = texto;
-    chatBox.appendChild(div);
+  const div = document.createElement("div");
+  div.textContent = texto;
+  chatBox.appendChild(div);
 
-    const audio = new Audio(audioSrc);
-    audio.play();
+  // Toca o áudio
+  const audio = new Audio(audioSrc);
+  audio.play();
 
-    // Quando o áudio terminar, resolver a Promise
-    audio.onended = () => {
-      resolve();
-    };
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-  });
-}
-
-function esperar(segundos) {
-  return new Promise(resolve => setTimeout(resolve, segundos * 1000));
+  // Rolagem automática
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
