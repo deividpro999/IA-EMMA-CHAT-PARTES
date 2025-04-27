@@ -1,6 +1,6 @@
 const mensagens = [
   { hora: 6, texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3" },
-  { hora: 12, texto: "Boa tarde! Como você está se sentindo hoje?", audio: "audios/boa-tarde.mp3" },
+  { hora: 12, texto: "Boa tarde! Como você está se sentindo hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/8fad33cb6b6e4e9d67364a11d4614743d910e1c6/audios/Boa%20tarde!%20Como%20voc%C3%AA%20est%C3%A1%20se%20sentindo%20hoje!.mp3" },
   { hora: 18, texto: "Boa noite! O que você conquistou hoje?", audio: "audios/boa-noite.mp3" },
   { texto: "Nunca desista! Cada passo é uma vitória.", audio: "audios/motivacional1.mp3" },
   { texto: "Acredite em você! O melhor está por vir.", audio: "audios/motivacional2.mp3" },
@@ -18,7 +18,7 @@ function iniciarModoAuto() {
   if (horaAtual >= 6 && horaAtual < 12) {
     enviarMensagem("Bom dia! Vamos fazer esse dia brilhar!", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3");
   } else if (horaAtual >= 12 && horaAtual < 18) {
-    enviarMensagem("Boa tarde! Como você está se sentindo hoje?", "audios/boa-tarde.mp3");
+    enviarMensagem("Boa tarde! Como você está se sentindo hoje?", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/8fad33cb6b6e4e9d67364a11d4614743d910e1c6/audios/Boa%20tarde!%20Como%20voc%C3%AA%20est%C3%A1%20se%20sentindo%20hoje!.mp3");
   } else {
     enviarMensagem("Boa noite! O que você conquistou hoje?", "audios/boa-noite.mp3");
   }
