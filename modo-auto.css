@@ -26,10 +26,7 @@ h1 {
   overflow-y: auto;
   height: 70vh; /* altura pra manter um bom espaço vertical também */
   
-  /* Começa o neon! */
-  border: 2px solid #00fff7; /* Borda azul neon */
-  box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 30px #00fff7;
-}
+  
 
 .mensagem {
     background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para contraste */
