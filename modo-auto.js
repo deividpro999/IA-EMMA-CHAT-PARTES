@@ -12,46 +12,52 @@ function iniciarModoAuto() {
   const chatBox = document.getElementById("chat-box");
   chatBox.innerHTML = ""; // Limpa o chat
 
-  // Função para checar a hora e exibir a mensagem correta
   const horaAtual = new Date().getHours();
-  
-  // Enviar a saudação dependendo da hora
+
+  // Mensagem inicial dependendo da hora
   if (horaAtual >= 6 && horaAtual < 12) {
-    enviarMensagem("Bom dia! Vamos fazer esse dia brilhar!", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3");
+    enviarMensagem(mensagens[0].texto, mensagens[0].audio);
   } else if (horaAtual >= 12 && horaAtual < 18) {
-    enviarMensagem("Boa tarde! Como você está se sentindo hoje?", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/8fad33cb6b6e4e9d67364a11d4614743d910e1c6/audios/Boa%20tarde!%20Como%20voc%C3%AA%20est%C3%A1%20se%20sentindo%20hoje!.mp3");
+    enviarMensagem(mensagens[1].texto, mensagens[1].audio);
   } else {
-    enviarMensagem("Boa noite! O que você conquistou hoje?", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3");
+    enviarMensagem(mensagens[2].texto, mensagens[2].audio);
   }
 
-  // Enviar frases motivacionais aleatórias com intervalo, sempre falando a nova por último
-  let ultimasMensagens = []; // Para armazenar as mensagens já faladas
+  // Depois de um tempo, começar as frases motivacionais
+  setTimeout(() => {
+    tocarMensagensMotivacionais();
+  }, 5000); // Espera 5 segundos depois da mensagem inicial
+}
 
-  setInterval(() => {
-    const mensagemMotivacional = mensagens[Math.floor(Math.random() * 3) + 3];
-    
-    // Verifica se a mensagem já foi falada antes, se sim, escolhe outra
-    if (ultimasMensagens.includes(mensagemMotivacional.texto)) return;
-    
-    ultimasMensagens.push(mensagemMotivacional.texto);
-    if (ultimasMensagens.length > 3) ultimasMensagens.shift(); // Limita a lista a 3 últimas mensagens
-    
-    enviarMensagem(mensagemMotivacional.texto, mensagemMotivacional.audio);
-  }, 10000); // Envia uma frase motivacional a cada 10 segundos
+async function tocarMensagensMotivacionais() {
+  while (true) {
+    const motivacionais = mensagens.slice(3); // Pega só as motivacionais
+    const mensagem = motivacionais[Math.floor(Math.random() * motivacionais.length)];
+    await enviarMensagem(mensagem.texto, mensagem.audio);
+    await esperar(15); // Espera 15 segundos antes da próxima
+  }
 }
 
 function enviarMensagem(texto, audioSrc) {
-  const chatBox = document.getElementById("chat-box");
+  return new Promise((resolve) => {
+    const chatBox = document.getElementById("chat-box");
 
-  // Adiciona a mensagem no chat
-  const div = document.createElement("div");
-  div.textContent = texto;
-  chatBox.appendChild(div);
+    const div = document.createElement("div");
+    div.textContent = texto;
+    chatBox.appendChild(div);
 
-  // Toca o áudio
-  const audio = new Audio(audioSrc);
-  audio.play();
+    const audio = new Audio(audioSrc);
+    audio.play();
 
-  // Rolagem automática para mostrar a última mensagem
-  chatBox.scrollTop = chatBox.scrollHeight;
+    // Quando o áudio terminar, resolver a Promise
+    audio.onended = () => {
+      resolve();
+    };
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+}
+
+function esperar(segundos) {
+  return new Promise(resolve => setTimeout(resolve, segundos * 1000));
 }
