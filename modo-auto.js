@@ -1,58 +1,82 @@
-const mensagens = [
-  { hora: 6, texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3" },
-  { hora: 12, texto: "Boa tarde! Como você está se sentindo hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/8fad33cb6b6e4e9d67364a11d4614743d910e1c6/audios/Boa%20tarde!%20Como%20voc%C3%AA%20est%C3%A1%20se%20sentindo%20hoje!.mp3" },
-  { hora: 18, texto: "Boa noite! O que você conquistou hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3" },
-  { texto: "Nunca desista! Cada passo é uma vitória.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Nunca%20desista!%20Cada%20passo%20%C3%A9%20uma%20vit%C3%B3ria..mp3" },
-  { texto: "Acredite em você! O melhor está por vir.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/3afd31c3537973aed765253033f2047037a4f515/audios/Acredite%20em%20voc%C3%AA!%20O%20melhor%20est%C3%A1%20por%20vir..mp3" },
-  { texto: "Você é incrível! Continue assim.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/2d2c5c800107d74d4119153ea98355bf3aab74ff/audios/Voc%C3%AA%20%C3%A9%20incr%C3%ADvel!%20Continue%20assim..mp3" },
-  { texto: "Agora o Vilgax vai sentir o gosto do grandão!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/97f217011f34f5ed981285d07f9c522b8b432942/audios/Agora%20o%20Vilgax%20vai%20Sentir%20o%20Gosto%20do%20Grand%C3%A3o!.mp3" }
+// Mensagens da manhã
+const mensagensManha = [
+  { texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "link1.mp3" },
+  { texto: "Acorde e brilhe! Hoje é seu dia!", audio: "link2.mp3" },
+  { texto: "Sorria para um novo começo!", audio: "link3.mp3" },
+  { texto: "Respire fundo, o sucesso te espera!", audio: "link4.mp3" },
+  { texto: "Hoje é o primeiro dia do resto da sua vida!", audio: "link5.mp3" },
+  { texto: "Levante e mostre ao mundo sua força!", audio: "link6.mp3" },
+  { texto: "Cada manhã é uma nova oportunidade!", audio: "link7.mp3" },
+  { texto: "Comece o dia acreditando em você!", audio: "link8.mp3" },
+  { texto: "O amanhecer traz novas chances!", audio: "link9.mp3" },
+  { texto: "Você é capaz de grandes coisas hoje!", audio: "link10.mp3" },
 ];
 
-let mensagensNaoFaladas = []; // Lista das frases que ainda não foram faladas
+// Mensagens da tarde
+const mensagensTarde = [
+  { texto: "Boa tarde! Como você está se sentindo hoje?", audio: "link11.mp3" },
+  { texto: "Continue firme, seu esforço vale a pena!", audio: "link12.mp3" },
+  { texto: "Dê uma pausa e respire. Você merece!", audio: "link13.mp3" },
+  { texto: "Aproveite essa tarde para crescer!", audio: "link14.mp3" },
+  { texto: "Nunca desista! Cada passo é uma vitória.", audio: "link15.mp3" },
+  { texto: "Você é mais forte do que imagina!", audio: "link16.mp3" },
+  { texto: "Cada desafio te torna melhor!", audio: "link17.mp3" },
+  { texto: "Seu brilho ilumina essa tarde!", audio: "link18.mp3" },
+  { texto: "Acredite em você! O melhor está por vir.", audio: "link19.mp3" },
+  { texto: "Siga em frente com coragem!", audio: "link20.mp3" },
+];
+
+// Mensagens da noite
+const mensagensNoite = [
+  { texto: "Boa noite! O que você conquistou hoje?", audio: "link21.mp3" },
+  { texto: "Relaxe, você deu o seu melhor!", audio: "link22.mp3" },
+  { texto: "Gratidão pelo dia vivido!", audio: "link23.mp3" },
+  { texto: "Amanhã é um novo começo!", audio: "link24.mp3" },
+  { texto: "Você foi incrível hoje!", audio: "link25.mp3" },
+  { texto: "Descanse sua mente e seu coração!", audio: "link26.mp3" },
+  { texto: "Sonhe alto esta noite!", audio: "link27.mp3" },
+  { texto: "Seu futuro é brilhante!", audio: "link28.mp3" },
+  { texto: "Boa noite, campeão!", audio: "link29.mp3" },
+  { texto: "Amanhã você vai conquistar ainda mais!", audio: "link30.mp3" },
+];
 
 function iniciarModoAuto() {
   const chatBox = document.getElementById("chat-box");
   chatBox.innerHTML = ""; // Limpa o chat
 
-  // Verifica a hora atual
   const horaAtual = new Date().getHours();
+  let grupoMensagens;
 
-  // Saudação de acordo com a hora
   if (horaAtual >= 6 && horaAtual < 12) {
-    enviarMensagem(mensagens[0].texto, mensagens[0].audio);
+    grupoMensagens = mensagensManha;
   } else if (horaAtual >= 12 && horaAtual < 18) {
-    enviarMensagem(mensagens[1].texto, mensagens[1].audio);
+    grupoMensagens = mensagensTarde;
   } else {
-    enviarMensagem(mensagens[2].texto, mensagens[2].audio);
+    grupoMensagens = mensagensNoite;
   }
 
-  // Preenche a lista de frases motivacionais (sem as saudações)
-  mensagensNaoFaladas = mensagens.slice(3);
+  // Começar enviando uma saudação
+  const saudacao = grupoMensagens[0];
+  enviarMensagem(saudacao.texto, saudacao.audio);
 
-  // Começar a enviar as frases
-  setTimeout(() => {
-    enviarProximaMensagem();
-  }, 3000); // Espera 3 segundos depois da saudação
-}
+  let mensagensJaFaladas = new Set();
+  mensagensJaFaladas.add(0); // A primeira já foi falada
 
-function enviarProximaMensagem() {
-  if (mensagensNaoFaladas.length === 0) {
-    console.log("Todas as mensagens já foram faladas!");
-    return;
-  }
+  setInterval(() => {
+    const mensagensDisponiveis = grupoMensagens.filter((_, i) => !mensagensJaFaladas.has(i));
+    if (mensagensDisponiveis.length === 0) {
+      mensagensJaFaladas.clear(); // Resetar se já falou todas
+      mensagensDisponiveis.push(...grupoMensagens.slice(1)); // Ignorar a primeira (saudação)
+    }
 
-  const chatBox = document.getElementById("chat-box");
+    const indiceAleatorio = Math.floor(Math.random() * mensagensDisponiveis.length);
+    const mensagem = mensagensDisponiveis[indiceAleatorio];
 
-  // Pega a próxima mensagem da lista
-  const mensagem = mensagensNaoFaladas.shift();
+    const indiceOriginal = grupoMensagens.indexOf(mensagem);
+    mensagensJaFaladas.add(indiceOriginal);
 
-  // Exibe e toca o áudio
-  enviarMensagem(mensagem.texto, mensagem.audio);
-
-  // Programa a próxima mensagem
-  setTimeout(() => {
-    enviarProximaMensagem();
-  }, 6000); // 6 segundos entre uma mensagem e outra (mais rápido)
+    enviarMensagem(mensagem.texto, mensagem.audio);
+  }, 10000); // Muda a cada 10 segundos
 }
 
 function enviarMensagem(texto, audioSrc) {
@@ -62,10 +86,8 @@ function enviarMensagem(texto, audioSrc) {
   div.textContent = texto;
   chatBox.appendChild(div);
 
-  // Toca o áudio
   const audio = new Audio(audioSrc);
   audio.play();
 
-  // Rolagem automática
   chatBox.scrollTop = chatBox.scrollHeight;
 }
