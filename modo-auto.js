@@ -18,7 +18,7 @@ const mensagensTarde = [
   { texto: "Continue firme, seu esforço vale a pena!", audio: "link12.mp3" },
   { texto: "Dê uma pausa e respire. Você merece!", audio: "link13.mp3" },
   { texto: "Aproveite essa tarde para crescer!", audio: "link14.mp3" },
-  { texto: "Nunca desista! Cada passo é uma vitória.", audio: "link15.mp3" },
+  { texto: "Nunca desista! Cada passo é uma vitória.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Nunca%20desista!%20Cada%20passo%20%C3%A9%20uma%20vit%C3%B3ria..mp3" },
   { texto: "Você é mais forte do que imagina!", audio: "link16.mp3" },
   { texto: "Cada desafio te torna melhor!", audio: "link17.mp3" },
   { texto: "Seu brilho ilumina essa tarde!", audio: "link18.mp3" },
@@ -29,10 +29,8 @@ const mensagensTarde = [
 // Mensagens da noite
 const mensagensNoite = [
   { texto: "Boa noite! O que você conquistou hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3" },
-  { texto: "Relaxe, você deu o seu melhor!", audio: "link22.mp3" },
-  { texto: "Nunca desista! Cada passo é uma vitória.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Nunca%20desista!%20Cada%20passo%20%C3%A9%20uma%20vit%C3%B3ria..mp3" },
   { texto: "Acredite em você! O melhor está por vir.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/3afd31c3537973aed765253033f2047037a4f515/audios/Acredite%20em%20voc%C3%AA!%20O%20melhor%20est%C3%A1%20por%20vir..mp3" },
-  { texto: "Você é incrível! Continue assim.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/2d2c5c800107d74d4119153ea98355bf3aab74ff/audios/Voc%C3%AA%20%C3%A9%20incr%C3%ADvel!%20Continue%20assim..mp3" },
+  { texto: "Relaxe, você deu o seu melhor!", audio: "link22.mp3" },
   { texto: "Gratidão pelo dia vivido!", audio: "link23.mp3" },
   { texto: "Amanhã é um novo começo!", audio: "link24.mp3" },
   { texto: "Você foi incrível hoje!", audio: "link25.mp3" },
@@ -41,8 +39,8 @@ const mensagensNoite = [
   { texto: "Seu futuro é brilhante!", audio: "link28.mp3" },
   { texto: "Boa noite, campeão!", audio: "link29.mp3" },
   { texto: "Amanhã você vai conquistar ainda mais!", audio: "link30.mp3" },
-  { texto: "Agora o Vilgax vai sentir o gosto do grandão!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/97f217011f34f5ed981285d07f9c522b8b432942/audios/Agora%20o%20Vilgax%20vai%20Sentir%20o%20Gosto%20do%20Grand%C3%A3o!.mp3" }
 ];
+
 
 let mensagensJaFaladas = new Set();
 let grupoMensagensAtual = [];
