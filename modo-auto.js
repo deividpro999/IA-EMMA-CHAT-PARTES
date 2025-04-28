@@ -1,104 +1,57 @@
-// Mensagens da manhã
-const mensagensManha = [
-  { texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "link1.mp3" },
-  { texto: "Acorde e brilhe! Hoje é seu dia!", audio: "link2.mp3" },
-  { texto: "Sorria para um novo começo!", audio: "link3.mp3" },
-  { texto: "Respire fundo, o sucesso te espera!", audio: "link4.mp3" },
-  { texto: "Hoje é o primeiro dia do resto da sua vida!", audio: "link5.mp3" },
-  { texto: "Levante e mostre ao mundo sua força!", audio: "link6.mp3" },
-  { texto: "Cada manhã é uma nova oportunidade!", audio: "link7.mp3" },
-  { texto: "Comece o dia acreditando em você!", audio: "link8.mp3" },
-  { texto: "O amanhecer traz novas chances!", audio: "link9.mp3" },
-  { texto: "Você é capaz de grandes coisas hoje!", audio: "link10.mp3" },
-];
-
-// Mensagens da tarde
-const mensagensTarde = [
-  { texto: "Boa tarde! Como você está se sentindo hoje?", audio: "link11.mp3" },
-  { texto: "Continue firme, seu esforço vale a pena!", audio: "link12.mp3" },
-  { texto: "Dê uma pausa e respire. Você merece!", audio: "link13.mp3" },
-  { texto: "Aproveite essa tarde para crescer!", audio: "link14.mp3" },
+const mensagens = [
+  { hora: 6, texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3" },
+  { hora: 12, texto: "Boa tarde! Como você está se sentindo hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/8fad33cb6b6e4e9d67364a11d4614743d910e1c6/audios/Boa%20tarde!%20Como%20voc%C3%AA%20est%C3%A1%20se%20sentindo%20hoje!.mp3" },
+  { hora: 18, texto: "Boa noite! O que você conquistou hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3" },
   { texto: "Nunca desista! Cada passo é uma vitória.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Nunca%20desista!%20Cada%20passo%20%C3%A9%20uma%20vit%C3%B3ria..mp3" },
-  { texto: "Você é mais forte do que imagina!", audio: "link16.mp3" },
-  { texto: "Cada desafio te torna melhor!", audio: "link17.mp3" },
-  { texto: "Seu brilho ilumina essa tarde!", audio: "link18.mp3" },
-  { texto: "Acredite em você! O melhor está por vir.", audio: "link19.mp3" },
-  { texto: "Siga em frente com coragem!", audio: "link20.mp3" },
-];
-
-// Mensagens da noite
-const mensagensNoite = [
-  { texto: "Boa noite! O que você conquistou hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3" },
   { texto: "Acredite em você! O melhor está por vir.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/3afd31c3537973aed765253033f2047037a4f515/audios/Acredite%20em%20voc%C3%AA!%20O%20melhor%20est%C3%A1%20por%20vir..mp3" },
-  { texto: "Relaxe, você deu o seu melhor!", audio: "link22.mp3" },
-  { texto: "Gratidão pelo dia vivido!", audio: "link23.mp3" },
-  { texto: "Amanhã é um novo começo!", audio: "link24.mp3" },
-  { texto: "Você foi incrível hoje!", audio: "link25.mp3" },
-  { texto: "Descanse sua mente e seu coração!", audio: "link26.mp3" },
-  { texto: "Sonhe alto esta noite!", audio: "link27.mp3" },
-  { texto: "Seu futuro é brilhante!", audio: "link28.mp3" },
-  { texto: "Boa noite, campeão!", audio: "link29.mp3" },
-  { texto: "Amanhã você vai conquistar ainda mais!", audio: "link30.mp3" },
+  { texto: "Você é incrível! Continue assim.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/2d2c5c800107d74d4119153ea98355bf3aab74ff/audios/Voc%C3%AA%20%C3%A9%20incr%C3%ADvel!%20Continue%20assim..mp3" },
   { texto: "Agora o Vilgax vai sentir o gosto do grandão!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/97f217011f34f5ed981285d07f9c522b8b432942/audios/Agora%20o%20Vilgax%20vai%20Sentir%20o%20Gosto%20do%20Grand%C3%A3o!.mp3" }
 ];
-
-
-let mensagensJaFaladas = new Set();
-let grupoMensagensAtual = [];
-let saudacaoFalou = false;
 
 function iniciarModoAuto() {
   const chatBox = document.getElementById("chat-box");
   chatBox.innerHTML = ""; // Limpa o chat
 
+  // Função para checar a hora e exibir a mensagem correta
   const horaAtual = new Date().getHours();
-
+  
+  // Enviar a saudação dependendo da hora
   if (horaAtual >= 6 && horaAtual < 12) {
-    grupoMensagensAtual = mensagensManha;
+    enviarMensagem("Bom dia! Vamos fazer esse dia brilhar!", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3");
   } else if (horaAtual >= 12 && horaAtual < 18) {
-    grupoMensagensAtual = mensagensTarde;
+    enviarMensagem("Boa tarde! Como você está se sentindo hoje?", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/8fad33cb6b6e4e9d67364a11d4614743d910e1c6/audios/Boa%20tarde!%20Como%20voc%C3%AA%20est%C3%A1%20se%20sentindo%20hoje!.mp3");
   } else {
-    grupoMensagensAtual = mensagensNoite;
+    enviarMensagem("Boa noite! O que você conquistou hoje?", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3");
   }
 
-  // Fala a saudação (só uma vez)
-  if (!saudacaoFalou) {
-    enviarMensagem(grupoMensagensAtual[0].texto, grupoMensagensAtual[0].audio);
-    mensagensJaFaladas.add(0);
-    saudacaoFalou = true;
-  }
+  // Enviar frases motivacionais aleatórias com intervalo, sempre falando a nova por último
+  let ultimasMensagens = []; // Para armazenar as mensagens já faladas
 
   setInterval(() => {
-    // Verifica se já falou todas
-    if (mensagensJaFaladas.size >= grupoMensagensAtual.length) {
-      mensagensJaFaladas.clear(); // Zera
-      mensagensJaFaladas.add(0); // Garante que a saudação não repita
-    }
-
-    // Pega só as mensagens que ainda não foram faladas
-    const mensagensDisponiveis = grupoMensagensAtual
-      .map((msg, index) => ({ msg, index }))
-      .filter(({ index }) => !mensagensJaFaladas.has(index) && index !== 0); // nunca escolhe a saudação de novo
-
-    if (mensagensDisponiveis.length === 0) return; // Se não tiver, espera próximo ciclo
-
-    const aleatorio = Math.floor(Math.random() * mensagensDisponiveis.length);
-    const { msg, index } = mensagensDisponiveis[aleatorio];
-
-    mensagensJaFaladas.add(index);
-    enviarMensagem(msg.texto, msg.audio);
-  }, 10000); // A cada 10 segundos
+    const mensagemMotivacional = mensagens[Math.floor(Math.random() * 3) + 3];
+    
+    // Verifica se a mensagem já foi falada antes, se sim, escolhe outra
+    if (ultimasMensagens.includes(mensagemMotivacional.texto)) return;
+    
+    ultimasMensagens.push(mensagemMotivacional.texto);
+    if (ultimasMensagens.length > 3) ultimasMensagens.shift(); // Limita a lista a 3 últimas mensagens
+    
+    enviarMensagem(mensagemMotivacional.texto, mensagemMotivacional.audio);
+  }, 10000); // Envia uma frase motivacional a cada 10 segundos
 }
 
 function enviarMensagem(texto, audioSrc) {
   const chatBox = document.getElementById("chat-box");
 
+  // Adiciona a mensagem no chat
   const div = document.createElement("div");
   div.textContent = texto;
   chatBox.appendChild(div);
 
+  // Toca o áudio
   const audio = new Audio(audioSrc);
   audio.play();
 
+  // Rolagem automática para mostrar a última mensagem
   chatBox.scrollTop = chatBox.scrollHeight;
 }
