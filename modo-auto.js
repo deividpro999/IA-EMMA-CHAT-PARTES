@@ -2,6 +2,10 @@ const mensagensManha = [
   { texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3" },
   { texto: "Nunca desista! Cada passo é uma vitória.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Nunca%20desista!%20Cada%20passo%20%C3%A9%20uma%20vit%C3%B3ria..mp3" },
   { texto: "Acredite em você! O melhor está por vir.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/3afd31c3537973aed765253033f2047037a4f515/audios/Acredite%20em%20voc%C3%AA!%20O%20melhor%20est%C3%A1%20por%20vir..mp3" },
+  { texto: "Hoje é um novo começo, aproveite!", audio: "link_do_audio" },
+  { texto: "Acorde com determinação e vá dormir com satisfação!", audio: "link_do_audio" },
+  { texto: "Cada amanhecer é uma nova chance para ser feliz!", audio: "link_do_audio" },
+  { texto: "Que hoje seja melhor que ontem!", audio: "link_do_audio" }
 ];
 
 const mensagensTarde = [
