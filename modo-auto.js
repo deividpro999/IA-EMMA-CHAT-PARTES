@@ -39,6 +39,7 @@ const mensagensNoite = [
   { texto: "Seu futuro é brilhante!", audio: "link28.mp3" },
   { texto: "Boa noite, campeão!", audio: "link29.mp3" },
   { texto: "Amanhã você vai conquistar ainda mais!", audio: "link30.mp3" },
+  { texto: "Agora o Vilgax vai sentir o gosto do grandão!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/97f217011f34f5ed981285d07f9c522b8b432942/audios/Agora%20o%20Vilgax%20vai%20Sentir%20o%20Gosto%20do%20Grand%C3%A3o!.mp3" }
 ];
 
 
