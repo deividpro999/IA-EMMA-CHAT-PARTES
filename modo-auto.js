@@ -40,43 +40,51 @@ const mensagensNoite = [
   { texto: "Amanhã você vai conquistar ainda mais!", audio: "link30.mp3" },
 ];
 
+let mensagensJaFaladas = new Set();
+let grupoMensagensAtual = [];
+let saudacaoFalou = false;
+
 function iniciarModoAuto() {
   const chatBox = document.getElementById("chat-box");
   chatBox.innerHTML = ""; // Limpa o chat
 
   const horaAtual = new Date().getHours();
-  let grupoMensagens;
 
   if (horaAtual >= 6 && horaAtual < 12) {
-    grupoMensagens = mensagensManha;
+    grupoMensagensAtual = mensagensManha;
   } else if (horaAtual >= 12 && horaAtual < 18) {
-    grupoMensagens = mensagensTarde;
+    grupoMensagensAtual = mensagensTarde;
   } else {
-    grupoMensagens = mensagensNoite;
+    grupoMensagensAtual = mensagensNoite;
   }
 
-  // Começar enviando uma saudação
-  const saudacao = grupoMensagens[0];
-  enviarMensagem(saudacao.texto, saudacao.audio);
-
-  let mensagensJaFaladas = new Set();
-  mensagensJaFaladas.add(0); // A primeira já foi falada
+  // Fala a saudação (só uma vez)
+  if (!saudacaoFalou) {
+    enviarMensagem(grupoMensagensAtual[0].texto, grupoMensagensAtual[0].audio);
+    mensagensJaFaladas.add(0);
+    saudacaoFalou = true;
+  }
 
   setInterval(() => {
-    const mensagensDisponiveis = grupoMensagens.filter((_, i) => !mensagensJaFaladas.has(i));
-    if (mensagensDisponiveis.length === 0) {
-      mensagensJaFaladas.clear(); // Resetar se já falou todas
-      mensagensDisponiveis.push(...grupoMensagens.slice(1)); // Ignorar a primeira (saudação)
+    // Verifica se já falou todas
+    if (mensagensJaFaladas.size >= grupoMensagensAtual.length) {
+      mensagensJaFaladas.clear(); // Zera
+      mensagensJaFaladas.add(0); // Garante que a saudação não repita
     }
 
-    const indiceAleatorio = Math.floor(Math.random() * mensagensDisponiveis.length);
-    const mensagem = mensagensDisponiveis[indiceAleatorio];
+    // Pega só as mensagens que ainda não foram faladas
+    const mensagensDisponiveis = grupoMensagensAtual
+      .map((msg, index) => ({ msg, index }))
+      .filter(({ index }) => !mensagensJaFaladas.has(index) && index !== 0); // nunca escolhe a saudação de novo
 
-    const indiceOriginal = grupoMensagens.indexOf(mensagem);
-    mensagensJaFaladas.add(indiceOriginal);
+    if (mensagensDisponiveis.length === 0) return; // Se não tiver, espera próximo ciclo
 
-    enviarMensagem(mensagem.texto, mensagem.audio);
-  }, 10000); // Muda a cada 10 segundos
+    const aleatorio = Math.floor(Math.random() * mensagensDisponiveis.length);
+    const { msg, index } = mensagensDisponiveis[aleatorio];
+
+    mensagensJaFaladas.add(index);
+    enviarMensagem(msg.texto, msg.audio);
+  }, 10000); // A cada 10 segundos
 }
 
 function enviarMensagem(texto, audioSrc) {
