@@ -2,10 +2,10 @@ const mensagensManha = [
   { texto: "Bom dia! Vamos fazer esse dia brilhar!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3" },
   { texto: "Nunca desista! Cada passo é uma vitória.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Nunca%20desista!%20Cada%20passo%20%C3%A9%20uma%20vit%C3%B3ria..mp3" },
   { texto: "Acredite em você! O melhor está por vir.", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/3afd31c3537973aed765253033f2047037a4f515/audios/Acredite%20em%20voc%C3%AA!%20O%20melhor%20est%C3%A1%20por%20vir..mp3" },
-  { texto: "Hoje é um novo começo, aproveite!", audio: "link_do_audio" },
-  { texto: "Acorde com determinação e vá dormir com satisfação!", audio: "link_do_audio" },
-  { texto: "Cada amanhecer é uma nova chance para ser feliz!", audio: "link_do_audio" },
-  { texto: "Que hoje seja melhor que ontem!", audio: "link_do_audio" }
+  { texto: "Hoje é um novo começo, aproveite!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/blob/488258e0b73e468dad67505b17dac71f1e298f3e/audios/Hoje%20%C3%A9%20um%20novo%20come%C3%A7o%2C%20aproveite!.mp3" },
+  { texto: "Acorde com determinação e vá dormir com satisfação!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/blob/488258e0b73e468dad67505b17dac71f1e298f3e/audios/Acorde%20com%20determina%C3%A7%C3%A3o%20e%20v%C3%A1%20dormir%20com%20satisfa%C3%A7%C3%A3o!.mp3" },
+  { texto: "Cada amanhecer é uma nova chance para ser feliz!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/blob/488258e0b73e468dad67505b17dac71f1e298f3e/audios/Cada%20amanhecer%20%C3%A9%20uma%20nova%20chance%20para%20ser%20feliz!.mp3" },
+  { texto: "Que hoje seja melhor que ontem!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/blob/488258e0b73e468dad67505b17dac71f1e298f3e/audios/Que%20hoje%20seja%20melhor%20que%20ontem!.mp3" }
 ];
 
 const mensagensTarde = [
