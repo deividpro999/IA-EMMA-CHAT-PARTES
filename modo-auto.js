@@ -28,7 +28,7 @@ const mensagensTarde = [
 
 // Mensagens da noite
 const mensagensNoite = [
-  { texto: "Boa noite! O que você conquistou hoje?", audio: "link21.mp3" },
+  { texto: "Boa noite! O que você conquistou hoje?", audio: "Boa noite! O que você conquistou hoje?", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3" },
   { texto: "Relaxe, você deu o seu melhor!", audio: "link22.mp3" },
   { texto: "Gratidão pelo dia vivido!", audio: "link23.mp3" },
   { texto: "Amanhã é um novo começo!", audio: "link24.mp3" },
