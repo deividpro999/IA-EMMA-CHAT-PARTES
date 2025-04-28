@@ -8,33 +8,44 @@ const mensagens = [
   { texto: "Agora o Vilgax vai sentir o gosto do grandão!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/97f217011f34f5ed981285d07f9c522b8b432942/audios/Agora%20o%20Vilgax%20vai%20Sentir%20o%20Gosto%20do%20Grand%C3%A3o!.mp3" }
 ];
 
+let mensagensMotivacionais = []; // Vai guardar as motivacionais
+let indiceMensagem = 0; // Controle de qual mensagem mostrar
+
 function iniciarModoAuto() {
   const chatBox = document.getElementById("chat-box");
   chatBox.innerHTML = ""; // Limpa o chat
 
-  // Função para checar a hora e exibir a mensagem correta
+  // Hora atual
   const horaAtual = new Date().getHours();
   
-  // Enviar a saudação dependendo da hora
+  // Envia a saudação correta
   if (horaAtual >= 6 && horaAtual < 12) {
-    enviarMensagem("Bom dia! Vamos fazer esse dia brilhar!", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/07e3f6b6d1af2d935615b7cd5a9ad56e0dc89f7a/audios/Bom%20dia!%20Vamos%20fazer%20esse%20dia%20brilhar!.mp3");
+    enviarMensagem(mensagens[0].texto, mensagens[0].audio);
   } else if (horaAtual >= 12 && horaAtual < 18) {
-    enviarMensagem("Boa tarde! Como você está se sentindo hoje?", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/8fad33cb6b6e4e9d67364a11d4614743d910e1c6/audios/Boa%20tarde!%20Como%20voc%C3%AA%20est%C3%A1%20se%20sentindo%20hoje!.mp3");
+    enviarMensagem(mensagens[1].texto, mensagens[1].audio);
   } else {
-    enviarMensagem("Boa noite! O que você conquistou hoje?", "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/980af71f31e640d7a4c37e60b71440c1f92cb3ed/audios/Boa%20noite!%20O%20que%20voc%CC%83e%20conquistou%20hoje!.mp3");
+    enviarMensagem(mensagens[2].texto, mensagens[2].audio);
   }
 
-  // Enviar frases motivacionais aleatórias com intervalo
-  setInterval(() => {
-    const mensagemMotivacional = mensagens[Math.floor(Math.random() * 3) + 3];
-    enviarMensagem(mensagemMotivacional.texto, mensagemMotivacional.audio);
-  }, 10000); // Envia uma frase motivacional a cada 10 segundos
+  // Prepara as mensagens motivacionais (a partir do índice 3 em diante)
+  mensagensMotivacionais = mensagens.slice(3);
+
+  // Começar a enviar uma por uma
+  const intervalo = setInterval(() => {
+    if (indiceMensagem < mensagensMotivacionais.length) {
+      const mensagem = mensagensMotivacionais[indiceMensagem];
+      enviarMensagem(mensagem.texto, mensagem.audio);
+      indiceMensagem++;
+    } else {
+      clearInterval(intervalo); // Quando acabar, para o intervalo
+    }
+  }, 10000); // 10 segundos
 }
 
 function enviarMensagem(texto, audioSrc) {
   const chatBox = document.getElementById("chat-box");
 
-  // Adiciona a mensagem no chat
+  // Adiciona a mensagem
   const div = document.createElement("div");
   div.textContent = texto;
   chatBox.appendChild(div);
@@ -43,6 +54,6 @@ function enviarMensagem(texto, audioSrc) {
   const audio = new Audio(audioSrc);
   audio.play();
 
-  // Rolagem automática para mostrar a última mensagem
+  // Scroll automático
   chatBox.scrollTop = chatBox.scrollHeight;
 }
