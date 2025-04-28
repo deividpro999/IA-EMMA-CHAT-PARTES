@@ -15,7 +15,6 @@ const mensagensManha = [
   { texto: "Seja grato por mais um dia de vida e faça valer a pena!",
   { texto: "Que hoje seja leve, produtivo e cheio de vitórias!",
   { texto: "Amanhecer é um presente. Aproveite cada segundo com alegria!",
-}
    
 ];
 
