@@ -62,3 +62,19 @@ function enviarMensagem(texto, audioSrc) {
 
   chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+// Cria o elemento de áudio
+const musicaFundo = document.createElement("audio");
+musicaFundo.src = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_11_-_Peaceful_Village.mp3";
+musicaFundo.loop = true;
+musicaFundo.volume = 0.4; // Volume mais suave
+
+// Adiciona o elemento no corpo da página
+document.body.appendChild(musicaFundo);
+
+// Espera a primeira interação do usuário para tocar (autoplay seguro)
+document.addEventListener("click", () => {
+  musicaFundo.play().catch(e => {
+    console.warn("Erro ao tentar tocar o áudio:", e);
+  });
+}, { once: true });
