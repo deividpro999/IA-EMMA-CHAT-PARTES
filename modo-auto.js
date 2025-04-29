@@ -6,15 +6,6 @@ const mensagensManha = [
   { texto: "Acorde com determinação e vá dormir com satisfação!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/488258e0b73e468dad67505b17dac71f1e298f3e/audios/Acorde%20com%20determina%C3%A7%C3%A3o%20e%20v%C3%A1%20dormir%20com%20satisfa%C3%A7%C3%A3o!.mp3" },
   { texto: "Cada amanhecer é uma nova chance para ser feliz!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/488258e0b73e468dad67505b17dac71f1e298f3e/audios/Cada%20amanhecer%20%C3%A9%20uma%20nova%20chance%20para%20ser%20feliz!.mp3" },
   { texto: "Que hoje seja melhor que ontem!", audio: "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/488258e0b73e468dad67505b17dac71f1e298f3e/audios/Que%20hoje%20seja%20melhor%20que%20ontem!.mp3" }
-  { texto: "Que o sol ilumine seus passos e aqueça suas esperanças!",
-  { texto: "Hoje você tem uma nova chance de fazer diferente e melhor!",
-  { texto: "A vida sorri para quem acredita no poder de um novo dia.",
-  { texto: "Acorde sorrindo! O universo adora ver você feliz.",
-  { texto: "Hoje é dia de plantar sonhos e colher conquistas!", 
-  { texto: "Cada manhã é uma nova oportunidade de recomeçar.",
-  { texto: "Seja grato por mais um dia de vida e faça valer a pena!",
-  { texto: "Que hoje seja leve, produtivo e cheio de vitórias!",
-  { texto: "Amanhecer é um presente. Aproveite cada segundo com alegria!",
    
 ];
 
