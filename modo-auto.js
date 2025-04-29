@@ -65,7 +65,7 @@ function enviarMensagem(texto, audioSrc) {
 
 // Cria o elemento de áudio
 const musicaFundo = document.createElement("audio");
-musicaFundo.src = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_11_-_Peaceful_Village.mp3";
+musicaFundo.src = "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/3f6a7a775a020c2d73c1bceabad0c7a4cfa7ac68/audios/Ambient%207%20-%2050%20Cent%20Bulletproof.mp3";
 musicaFundo.loop = true;
 musicaFundo.volume = 0.4; // Volume mais suave
 
