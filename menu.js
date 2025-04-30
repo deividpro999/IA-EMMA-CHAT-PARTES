@@ -1,7 +1,21 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Função para navegação
+document.addEventListener('DOMContentLoaded', function () {
+    // Verificar se existe um estado salvo e redirecionar imediatamente
+    const savedChoice = localStorage.getItem('menuChoice');
+    if (savedChoice === 'novo-chat') {
+        window.location.href = 'index.html';
+        return;
+    } else if (savedChoice === 'carregar-chat') {
+        window.location.href = 'carregar.html';
+        return;
+    }
+
+    // Se for 'opcoes', abrir a tela de opções sem sair da página
+    if (savedChoice === 'opcoes') {
+        document.getElementById('options-screen').classList.remove('hidden');
+    }
+
+    // Definição das funções
     function navigateTo(option) {
-        // Salvar a opção no localStorage
         localStorage.setItem('menuChoice', option);
 
         switch (option) {
@@ -15,50 +29,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('options-screen').classList.remove('hidden');
                 break;
             case 'sair':
-                window.close(); // Fechar a aba/ventana
+                window.close();
                 break;
         }
     }
 
-    // Função para abrir opções
     function openOptions() {
         document.getElementById('options-screen').classList.remove('hidden');
     }
 
-    // Função para fechar opções
     function closeOptions() {
         document.getElementById('options-screen').classList.add('hidden');
     }
 
-    // Função para sair da aplicação
     function exitApp() {
         window.close();
     }
 
-    // Verificar se existe um estado salvo e redirecionar
-    const savedChoice = localStorage.getItem('menuChoice');
-    if (savedChoice) {
-        navigateTo(savedChoice);
-    }
-
     // Adicionando eventos aos botões
-    document.getElementById('novo-chat').addEventListener('click', function() {
+    document.getElementById('novo-chat').addEventListener('click', function () {
         navigateTo('novo-chat');
     });
 
-    document.getElementById('carregar-chat').addEventListener('click', function() {
+    document.getElementById('carregar-chat').addEventListener('click', function () {
         navigateTo('carregar-chat');
     });
 
-    document.getElementById('opcoes').addEventListener('click', function() {
-        openOptions();
+    document.getElementById('opcoes').addEventListener('click', function () {
+        navigateTo('opcoes');
     });
 
-    document.getElementById('sair').addEventListener('click', function() {
+    document.getElementById('sair').addEventListener('click', function () {
         exitApp();
     });
 
-    document.getElementById('close-options').addEventListener('click', function() {
+    document.getElementById('close-options').addEventListener('click', function () {
         closeOptions();
     });
 });
