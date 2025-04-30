@@ -118,3 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showAvisoPrincipal();
 });
+
+document.querySelectorAll('#menu button').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const option = this.getAttribute('data-option');
+        if (option === 'diretor-animation-story') {
+            carregarConteudo('diretor-animation-story.html', 'diretor-animation-story.js');
+        }
+    });
+});
+
+function carregarConteudo(htmlFile, jsFile) {
+    const container = document.getElementById('conteudo-dinamico');
+    
+    fetch(htmlFile)
+        .then(res => res.text())
+        .then(html => {
+            container.innerHTML = html;
+
+            // Carregar o JS separado
+            const script = document.createElement('script');
+            script.src = jsFile;
+            script.defer = true;
+            container.appendChild(script);
+        })
+        .catch(err => console.error('Erro ao carregar conteúdo:', err));
+}
+
