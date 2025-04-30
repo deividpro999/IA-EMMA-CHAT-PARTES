@@ -104,6 +104,22 @@
         function applyChanges() {
             options.style.display = 'none';
         }
-    </script>
+    <script>
+    const musicaFundo = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    musicaFundo.loop = true;
+    musicaFundo.volume = 0.5;
+
+    function iniciarMusica() {
+        musicaFundo.play().catch((e) => {
+            console.warn('A música não pôde ser iniciada automaticamente:', e);
+        });
+
+        // Remover o evento após o primeiro clique
+        document.removeEventListener('click', iniciarMusica);
+    }
+
+    // Espera qualquer clique do usuário para iniciar a música
+    document.addEventListener('click', iniciarMusica);
+</script>
 </body>
 </html>
