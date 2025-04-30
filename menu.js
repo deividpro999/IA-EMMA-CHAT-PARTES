@@ -54,20 +54,3 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('close-options').addEventListener('click', function() {
         closeOptions();
     });
-    // Cria o elemento de áudio
-const musicaFundo = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // você pode trocar esse link
-musicaFundo.loop = true;
-musicaFundo.volume = 0.5; // volume opcional
-
-// Estado de música ligada/desligada
-let musicaLigada = false;
-
-// Quando clica no botão, alterna
-document.getElementById('icone-musica').addEventListener('click', () => {
-    if (musicaLigada) {
-        musicaFundo.pause();
-    } else {
-        musicaFundo.play().catch(e => console.log("Erro ao reproduzir áudio:", e));
-    }
-    musicaLigada = !musicaLigada;
-});
