@@ -104,7 +104,6 @@
             options.style.display = 'none';
         }
     </script>
-    <!-- Ícone de música para ativar -->
 <style>
   #icone-musica {
     position: fixed;
@@ -114,6 +113,7 @@
     border: none;
     border-radius: 50%;
     padding: 10px;
+    font-size: 24px;
     cursor: pointer;
     z-index: 9999;
     transition: background-color 0.3s;
@@ -123,10 +123,10 @@
   }
 </style>
 
-<button id="icone-musica" title="Ativar música 🎵">🎵</button>
+<button id="icone-musica" title="Música: desligada">🔇</button>
 
 <audio id="musica-fundo" loop>
-  <source src="https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/main/audios/Ambient%207%20-%2050%20Cent%20Bulletproof.mp3" type="audio/mpeg">
+  <source src="https://deividpro999.github.io/IA-EMMA-CHAT-PARTES/audios/Ambient%207%20-%2050%20Cent%20Bulletproof.mp3" type="audio/mpeg">
   Seu navegador não suporta áudio HTML5.
 </audio>
 
@@ -134,12 +134,24 @@
   const botaoMusica = document.getElementById("icone-musica");
   const audioFundo = document.getElementById("musica-fundo");
 
+  let musicaLigada = false;
+
   botaoMusica.addEventListener("click", () => {
-    audioFundo.play().catch((e) => {
-      console.warn("Não foi possível tocar o áudio automaticamente:", e);
-    });
+    if (!musicaLigada) {
+      audioFundo.play().then(() => {
+        musicaLigada = true;
+        botaoMusica.innerText = "🔊";
+        botaoMusica.title = "Música: ligada";
+      }).catch((e) => {
+        console.warn("Autoplay bloqueado pelo navegador. Interação necessária.", e);
+      });
+    } else {
+      audioFundo.pause();
+      musicaLigada = false;
+      botaoMusica.innerText = "🔇";
+      botaoMusica.title = "Música: desligada";
+    }
   });
 </script>
-    
 </body>
 </html>
