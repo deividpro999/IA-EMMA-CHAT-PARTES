@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Definição das funções
-    
     // Função para navegação
     function navigateTo(option) {
+        // Salvar a opção no localStorage
+        localStorage.setItem('menuChoice', option);
+
         switch (option) {
             case 'novo-chat':
                 window.location.href = 'index.html';
@@ -34,6 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window.close();
     }
 
+    // Verificar se existe um estado salvo e redirecionar
+    const savedChoice = localStorage.getItem('menuChoice');
+    if (savedChoice) {
+        navigateTo(savedChoice);
+    }
+
     // Adicionando eventos aos botões
     document.getElementById('novo-chat').addEventListener('click', function() {
         navigateTo('novo-chat');
@@ -54,3 +61,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('close-options').addEventListener('click', function() {
         closeOptions();
     });
+});
