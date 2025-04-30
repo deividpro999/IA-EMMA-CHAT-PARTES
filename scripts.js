@@ -97,6 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'opcoes':
                 window.open('opcoes.html', 'Opções', 'width=400,height=400');
                 break;
+            case 'diretor-animation-story':
+                carregarConteudo('diretor-animation-story.html', 'diretor-animation-story.js');
+                break;
             case 'sair':
                 window.close();
                 break;
@@ -116,32 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Erro ao carregar o conteúdo:', error));
     }
 
+    function carregarConteudo(htmlFile, jsFile) {
+        const container = document.getElementById('conteudo-dinamico');
+        fetch(htmlFile)
+            .then(res => res.text())
+            .then(html => {
+                container.innerHTML = html;
+                const script = document.createElement('script');
+                script.src = jsFile;
+                script.defer = true;
+                container.appendChild(script);
+            })
+            .catch(err => console.error('Erro ao carregar conteúdo:', err));
+    }
+
     showAvisoPrincipal();
 });
-
-document.querySelectorAll('#menu button').forEach(btn => {
-    btn.addEventListener('click', function () {
-        const option = this.getAttribute('data-option');
-        if (option === 'diretor-animation-story') {
-            carregarConteudo('diretor-animation-story.html', 'diretor-animation-story.js');
-        }
-    });
-});
-
-function carregarConteudo(htmlFile, jsFile) {
-    const container = document.getElementById('conteudo-dinamico');
-    
-    fetch(htmlFile)
-        .then(res => res.text())
-        .then(html => {
-            container.innerHTML = html;
-
-            // Carregar o JS separado
-            const script = document.createElement('script');
-            script.src = jsFile;
-            script.defer = true;
-            container.appendChild(script);
-        })
-        .catch(err => console.error('Erro ao carregar conteúdo:', err));
-}
-
