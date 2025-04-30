@@ -54,27 +54,20 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('close-options').addEventListener('click', function() {
         closeOptions();
     });
-    // MÚSICA DE FUNDO
-const musicaFundo = document.createElement("audio");
-musicaFundo.src = "https://github.com/deividpro999/IA-EMMA-CHAT-PARTES/raw/3f6a7a775a020c2d73c1bceabad0c7a4cfa7ac68/audios/Ambient%207%20-%2050%20Cent%20Bulletproof.mp3";
+    // Cria o elemento de áudio
+const musicaFundo = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // você pode trocar esse link
 musicaFundo.loop = true;
-musicaFundo.volume = 0.4;
-document.body.appendChild(musicaFundo);
+musicaFundo.volume = 0.5; // volume opcional
 
-document.addEventListener("click", () => {
-  musicaFundo.play().catch(e => console.warn("Erro ao tocar música:", e));
-}, { once: true });
+// Estado de música ligada/desligada
+let musicaLigada = false;
 
-const botaoMusica = document.getElementById("icone-musica");
-let tocando = false;
-
-botaoMusica.addEventListener("click", () => {
-  if (tocando) {
-    musicaFundo.pause();
-    botaoMusica.textContent = "🔇";
-  } else {
-    musicaFundo.play().catch(e => console.warn("Erro ao tentar tocar música:", e));
-    botaoMusica.textContent = "🎵";
-  }
-  tocando = !tocando;
+// Quando clica no botão, alterna
+document.getElementById('icone-musica').addEventListener('click', () => {
+    if (musicaLigada) {
+        musicaFundo.pause();
+    } else {
+        musicaFundo.play().catch(e => console.log("Erro ao reproduzir áudio:", e));
+    }
+    musicaLigada = !musicaLigada;
 });
