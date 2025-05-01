@@ -92,60 +92,23 @@
         <button onclick="applyChanges()">Aplicar</button>
     </div>
     <script>
-        const menu = document.getElementById('menu');
-        const options = document.getElementById('options');
-        const slider = document.getElementById('slider');
+    const menu = document.getElementById('menu');
+    const options = document.getElementById('options');
+    const slider = document.getElementById('slider');
+    const conteudoDinamico = document.getElementById('conteudo-dinamico');
 
-        document.querySelector('button[data-option="opcoes"]').addEventListener('click', () => {
-            options.style.display = 'flex';
-        });
-
-        slider.addEventListener('input', (event) => {
-            const value = event.target.value;
-            menu.style.transform = translateY(${value}px);
-        });
-
-        function applyChanges() {
-            options.style.display = 'none';
-        }
-
-</script>
-    <script>
-    function carregarConteudo(htmlFile, jsFile) {
-        const container = document.getElementById('conteudo-dinamico');
-
-        fetch(htmlFile)
-            .then(res => res.text())
-            .then(html => {
-                container.innerHTML = html;
-
-                if (jsFile) {
-                    const script = document.createElement('script');
-                    script.src = jsFile;
-                    script.defer = true;
-                    container.appendChild(script);
-                }
-            })
-            .catch(err => console.error('Erro ao carregar conteúdo:', err));
-    }
-
-    function navigateTo(option) {
-        switch(option) {
-            case 'diretor-animation-story':
-                carregarConteudo('diretor-animation-story.html', 'diretor-animation-story.js');
-                break;
-            // Adicione mais cases se quiser outros conteúdos dinâmicos
-        }
-    }
-
-    document.querySelectorAll('button[data-option]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const option = btn.getAttribute('data-option');
-            navigateTo(option);
-        });
+    document.querySelector('button[data-option="opcoes"]').addEventListener('click', () => {
+        options.style.display = 'flex';
     });
-<script>
-    const conteudoDinamico = document.getElementById("conteudo-dinamico");
+
+    slider.addEventListener('input', (event) => {
+        const value = event.target.value;
+        menu.style.transform = `translateY(${value}px)`;
+    });
+
+    function applyChanges() {
+        options.style.display = 'none';
+    }
 
     document.getElementById("abrir-diretor").addEventListener("click", () => {
         fetch("diretor-animation-story.html")
@@ -153,11 +116,10 @@
             .then(data => {
                 conteudoDinamico.innerHTML = data;
 
-                // Adiciona evento para o botão de voltar
                 const voltarBtn = conteudoDinamico.querySelector("#voltar-ao-menu");
                 if (voltarBtn) {
                     voltarBtn.addEventListener("click", () => {
-                        conteudoDinamico.innerHTML = ""; // Limpa o conteúdo
+                        conteudoDinamico.innerHTML = "";
                     });
                 }
             })
