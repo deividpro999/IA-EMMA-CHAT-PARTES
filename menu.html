@@ -80,6 +80,9 @@
         <button data-option="modo-auto">Modo Automático</button>
         <button data-option="opcoes">Opções</button>
         <button data-option="sair">Sair</button>
+
+        <!-- Aqui é onde o conteúdo externo será carregado -->
+    <div id="conteudo-dinamico"></div>
     </div>
     <div id="options">
         <div id="slider-container">
@@ -99,13 +102,48 @@
 
         slider.addEventListener('input', (event) => {
             const value = event.target.value;
-            menu.style.transform = `translateY(${value}px)`;
+            menu.style.transform = translateY(${value}px);
         });
 
         function applyChanges() {
             options.style.display = 'none';
         }
 
+</script>
+    <script>
+    function carregarConteudo(htmlFile, jsFile) {
+        const container = document.getElementById('conteudo-dinamico');
+
+        fetch(htmlFile)
+            .then(res => res.text())
+            .then(html => {
+                container.innerHTML = html;
+
+                if (jsFile) {
+                    const script = document.createElement('script');
+                    script.src = jsFile;
+                    script.defer = true;
+                    container.appendChild(script);
+                }
+            })
+            .catch(err => console.error('Erro ao carregar conteúdo:', err));
+    }
+
+    function navigateTo(option) {
+        switch(option) {
+            case 'diretor-animation-story':
+                carregarConteudo('diretor-animation-story.html', 'diretor-animation-story.js');
+                break;
+            // Adicione mais cases se quiser outros conteúdos dinâmicos
+        }
+    }
+
+    document.querySelectorAll('button[data-option]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const option = btn.getAttribute('data-option');
+            navigateTo(option);
+        });
+    });
 </script>
 </body>
 </html>
