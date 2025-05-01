@@ -144,6 +144,28 @@
             navigateTo(option);
         });
     });
+<script>
+    const conteudoDinamico = document.getElementById("conteudo-dinamico");
+
+    document.getElementById("abrir-diretor").addEventListener("click", () => {
+        fetch("diretor-animation-story.html")
+            .then(response => response.text())
+            .then(data => {
+                conteudoDinamico.innerHTML = data;
+
+                // Adiciona evento para o botão de voltar
+                const voltarBtn = conteudoDinamico.querySelector("#voltar-ao-menu");
+                if (voltarBtn) {
+                    voltarBtn.addEventListener("click", () => {
+                        conteudoDinamico.innerHTML = ""; // Limpa o conteúdo
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao carregar conteúdo:", error);
+                conteudoDinamico.innerHTML = "<p>Erro ao carregar conteúdo.</p>";
+            });
+    });
 </script>
 </body>
 </html>
