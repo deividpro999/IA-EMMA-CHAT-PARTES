@@ -1,18 +1,33 @@
-
 <div class="pagina-opcoes">
-  <h2>Configurações Gerais</h2>
-  <label for="tema">Tema:</label>
-  <select id="tema">
-    <option value="claro">Claro</option>
-    <option value="escuro">Escuro</option>
-  </select>
+  <h2>Configurações de Música</h2>
+
+  <label>
+    <input type="checkbox" id="toggle-musica">
+    Ativar música do menu
+  </label>
 
   <br><br>
-
-  <label for="volume">Volume:</label>
-  <input type="range" id="volume" min="0" max="100" value="50">
-
-  <br><br>
-
   <button id="voltar-ao-menu">Voltar ao Menu</button>
 </div>
+
+<script>
+  const musica = document.getElementById("musica-menu") || document.querySelector("audio");
+
+  const toggle = document.getElementById("toggle-musica");
+  if (localStorage.getItem("musicaAtiva") === "true") {
+    toggle.checked = true;
+    if (musica) musica.play();
+  }
+
+  toggle.addEventListener("change", () => {
+    const ativar = toggle.checked;
+    localStorage.setItem("musicaAtiva", ativar);
+    if (musica) {
+      ativar ? musica.play() : musica.pause();
+    }
+  });
+
+  document.getElementById("voltar-ao-menu").addEventListener("click", () => {
+    document.getElementById("conteudo-dinamico").innerHTML = "";
+  });
+</script>
