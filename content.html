@@ -1,2 +1,119 @@
-<h1>Bem-vindo ao Chat!</h1>
-<p>Este é o conteúdo principal do chat.</p>
+<div id="chat-container">
+  <div id="chat-log"></div>
+
+  <div id="chat-input">
+    <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+    <button onclick="enviarMensagem()">Enviar</button>
+  </div>
+</div>
+
+<audio id="emma-audio" preload="auto"></audio>
+
+<style>
+  #chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    background: #111;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  #chat-log {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+
+  .mensagem {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+  }
+
+  .usuario {
+    background-color: #444;
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  .emma {
+    background-color: #222;
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  #chat-input {
+    display: flex;
+    gap: 10px;
+  }
+
+  #chat-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+
+  #chat-input button {
+    padding: 10px;
+    background-color: #00c3ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const chatLog = document.getElementById('chat-log');
+  const userInput = document.getElementById('user-input');
+  const emmaAudio = document.getElementById('emma-audio');
+
+  const respostas = {
+    "oi": { texto: "Olá! Tudo bem com você?", audio: "https://github.com/deividpro999/audios-emma/raw/main/ola.mp3" },
+    "como você está?": { texto: "Estou ótima! Obrigada por perguntar.", audio: "https://github.com/deividpro999/audios-emma/raw/main/estou-bem.mp3" },
+    "qual sua idade?": { texto: "Tenho 19 aninhos e você, chefinho?", audio: "https://github.com/deividpro999/audios-emma/raw/main/idade.mp3" },
+    "bom dia": { texto: "Bom dia pra você também!", audio: "https://github.com/deividpro999/audios-emma/raw/main/bom-dia.mp3" },
+    "boa tarde": { texto: "Boa tarde! Como posso ajudar?", audio: "https://github.com/deividpro999/audios-emma/raw/main/boa-tarde.mp3" },
+    "boa noite": { texto: "Boa noite! Que tal relaxar um pouco agora?", audio: "https://github.com/deividpro999/audios-emma/raw/main/boa-noite.mp3" },
+    "quero saber mais sobre você": { texto: "Sou a Emma, sua assistente inteligente. Sempre pronta pra ajudar!", audio: "https://github.com/deividpro999/audios-emma/raw/main/sobre-emma.mp3" },
+  };
+
+  function adicionarMensagem(texto, classe) {
+    const msg = document.createElement('div');
+    msg.className = 'mensagem ' + classe;
+    msg.innerText = texto;
+    chatLog.appendChild(msg);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function enviarMensagem() {
+    const texto = userInput.value.trim();
+    if (texto === "") return;
+
+    adicionarMensagem(texto, 'usuario');
+    userInput.value = "";
+
+    const chave = texto.toLowerCase();
+    if (respostas[chave]) {
+      setTimeout(() => {
+        adicionarMensagem(respostas[chave].texto, 'emma');
+        emmaAudio.src = respostas[chave].audio;
+        emmaAudio.play();
+      }, 500);
+    } else {
+      setTimeout(() => {
+        adicionarMensagem("Desculpa, ainda não sei responder isso. Pode tentar outra pergunta?", 'emma');
+      }, 500);
+    }
+  }
+
+  userInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      enviarMensagem();
+    }
+  });
+</script>
