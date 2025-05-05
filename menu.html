@@ -129,5 +129,19 @@
             });
     });
 </script>
+    <audio id="musica-menu" loop>
+  <source src="URL_DA_SUA_MUSICA.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+<script>
+  const musicaMenu = document.getElementById("musica-menu");
+  if (localStorage.getItem("musicaAtiva") === "true") {
+    musicaMenu.play().catch(() => {
+      // Pode falhar se autoplay for bloqueado
+      console.log("Autoplay bloqueado. O usuário precisa ativar manualmente.");
+    });
+  }
+</script>
 </body>
 </html>
